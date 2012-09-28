@@ -1,0 +1,49 @@
+3 Hours Dungeon is a Gaming Community. The goal is to create an organized array of portals pertaining to many specific video games (eg: Guild Wars 2, Planet Side 2) and genres of video games (eg: MOBA, FPS).
+
+The website is developed using cakePHP 2.2 and uses MVC and cakePHP conventions.
+
+Technologies being used: CakePHP Framework, JQUERY, JQUERY UI
+
+The goal for the Base Project is to create a foundation on which the rest of the portals can be created. Therefore, the project should consist of only the most core funcitonality for each portal.
+
+All sites must have:
+1.  Global User Login
+2.  Global User Permissions
+3.  Local User Permissions
+4.  Global User Profiles
+5.  Local User Profiles
+6.  Global User Messaging
+7.  Local Articles
+8.  Global Forum
+9.  Local Forum
+10. Global Streaming
+
+Site Plan:
+Layout
+Login/Logout/Register Links
+Portal Navigation (Switch Portals)
+Local Search (Search Current Portal)
+Local Navigation (Navigate Current Portal)
+Footer (Site Mission/Site Map/Copyright)
+User Profile
+Profile Page
+Account Management Page
+Private Messages
+Landing
+Last 5 Articles
+Rotating News Widget
+Recent Forum Activity
+Recent Stream Activity
+Community
+Forum
+Forum Categories
+Forums
+Topics
+Posts
+Media
+Images
+Videos
+Streams
+Stream Categories
+Official Streams
+Community Streams
