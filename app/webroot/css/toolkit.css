@@ -1,0 +1,20 @@
+.clearfix{
+	display: block;
+	clear: both;
+}
+
+.spacerVertical10px{
+	position: relative;
+	clear: both;
+	display: block;
+	height: 10px;
+	width: 1px;
+}
+
+.spacerHorizontal10px{
+	position: relative;
+	clear: both;
+	display: block;
+	height: 1px;
+	width: 10px;
+}

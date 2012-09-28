@@ -1,0 +1,135 @@
+/* Core Layout */
+
+/***********************************
+ * Core Style for Layout Containers
+ **********************************/
+html, body, div, span, object, iframe, address, blockquote, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, b, bdo, big, cite, code, del, dfn, em, i, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, form, fieldset, legend, label, table, caption, thead, tfoot, tbody, tr, th, td {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    outline: 0px none;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body{
+	background-image: url('/img/site-resources/background.jpg');
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 12px;
+	color: #e4d3c5;
+	/*For IE, Use PIE.htc to allow for advanced CSS3 Effects*/
+	behavior: url(/PIE.htc); 
+}
+
+/***********************************
+ * Core Style for Layout Containers
+ **********************************/
+#container{
+	position: relative;
+	left: -1px;
+	width: 100%;
+}
+
+#header{
+	position: relative;
+	width: 942px;
+	height: 230px;
+}
+
+#content{
+	position: relative;
+	background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
+	-pie-background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
+	width: 942px;
+	min-height: 500px;
+}
+#contentAlignment{
+	position: relative;
+	width: 898px;
+	height: auto;
+	padding: 18px 18px 10px 18px;
+}
+#footer{
+	position: relative;
+	width: 942px;
+}
+
+/***********************************
+ * Page Columns and Common Wrappers
+ **********************************/
+#oneThird{
+	width: 299px;
+}
+#twoThird{
+	width: 598px;
+}
+#wrapper900px{
+	width: 898px;
+}
+
+/*****************************
+ * HTML Attributes Attachable
+ ****************************/
+.alignCentered{
+	margin: 0 auto 0 auto;
+}
+.marginTop10px{
+	margin-top: 10px;
+}
+.marginBottom10px{
+	margin-bottom: 10px;
+}
+.marginLeft10px{
+	margin-left: 10px;
+}
+.marginRight10px{
+	margin-right: 10px;
+}
+.bgWhite{
+	background-color: #FFFFFF;
+}
+.bgBlack{
+	background-color: #000000;
+}
+
+
+/***********************************
+ * Layout Elements
+ **********************************/
+
+/*User Controls*/
+#userControl{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 40px;
+	min-width: 150px;
+}
+#userControlBody{
+	position: relative;
+	float: left;
+	height: 40px;
+	background: url('/img/site-resources/user-control-background-repeat.png') top left repeat-x;
+}
+#userControlLeft{
+	position: relative;
+	float: left;
+	height: 40px;
+	width: 50px;
+	background: url('/img/site-resources/user-control-background-left.png') top left no-repeat;
+}
+#userConrolDropDown{
+	
+}
+#userControlElement{
+	
+}
+
+/*Search Bar*/
+#searchBar{
+	
+}

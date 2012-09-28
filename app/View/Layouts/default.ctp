@@ -1,13 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
+		echo $this->Html->css('layout');
+		echo $this->Html->css('toolkit');
+		echo $this->Html->css('fonts');
+		echo $this->Html->css('tables');
+		echo $this->Html->css('debug');
+		echo $this->Html->script('layout.js');
+		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js');
+		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js');
+		echo $this->Html->script('timings.js');
 		//Load CSS Files for the current view if they exist in the /css/controller/view.css format
 		if (is_file(APP.WEBROOT_DIR.DS."css".DS.$this->params["controller"].DS.$this->params["action"].".css")){ 
 		       echo $this->html->css($this->params["controller"]."/".$this->params["action"]); 
@@ -22,14 +28,19 @@
 	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			
+	<div id="container" class="clearfix">
+		<div id="header" class="clearfix alignCentered">
+			<div id="userControl" class="clearfix">
+				<div id="userControlLeft"></div>
+				<div id="userControlBody"></div>
+			</div>
 		</div>
-		<div id="content">
-			
+		<div id="content" class="clearfix alignCentered">
+			<div id="contentAlignment" class="clearfix">
+				<?php echo $this->fetch('content'); ?>
+			</div>
 		</div>
-		<div id="footer">
+		<div id="footer" class="clearfix alignCentered">
 			
 		</div>
 	</div>
