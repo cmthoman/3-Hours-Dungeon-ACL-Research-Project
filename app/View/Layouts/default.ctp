@@ -11,14 +11,12 @@
 		echo $this->Html->css('tables');
 		echo $this->Html->css('debug');
 		echo $this->Html->script('layout.js');
-		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js');
-		echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js');
-		echo $this->Html->script('timings.js');
+		echo $this->Html->script('jquery.js');
 		//Load CSS Files for the current view if they exist in the /css/controller/view.css format
 		if (is_file(APP.WEBROOT_DIR.DS."css".DS.$this->params["controller"].DS.$this->params["action"].".css")){ 
 		       echo $this->html->css($this->params["controller"]."/".$this->params["action"]); 
 		}
-		//Load JS Files for the current view if they exist in the /js/controller/view.css format
+		//Load JS Files for the current view if they exist in the /js/controller/view.js format
 		if (is_file(APP.WEBROOT_DIR.DS."js".DS.$this->params["controller"].DS.$this->params["action"].".js")){ 
 		       echo $this->Html->script($this->params["controller"]."/".$this->params["action"]); 
 		}

@@ -1,3 +1,3 @@
 $(document).ready(function() {
-	alert('HELLO');
+	alert('FUCK');
 });
