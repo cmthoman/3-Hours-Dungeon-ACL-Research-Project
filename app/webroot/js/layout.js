@@ -1,3 +1,5 @@
 $(document).ready(function() {
-	alert('FUCK');
+	userControlWidth = $("#userControl").width();
+	userControlLeftWidth = $("#userControlLeft").width();
+	$("#userControlBody").css('width', userControlWidth - userControlLeftWidth);
 });

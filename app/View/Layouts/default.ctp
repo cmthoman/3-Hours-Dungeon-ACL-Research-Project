@@ -10,8 +10,8 @@
 		echo $this->Html->css('fonts');
 		echo $this->Html->css('tables');
 		echo $this->Html->css('debug');
-		echo $this->Html->script('layout.js');
-		echo $this->Html->script('jquery.js');
+		echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js');
+		echo $this->Html->script('layout');
 		//Load CSS Files for the current view if they exist in the /css/controller/view.css format
 		if (is_file(APP.WEBROOT_DIR.DS."css".DS.$this->params["controller"].DS.$this->params["action"].".css")){ 
 		       echo $this->html->css($this->params["controller"]."/".$this->params["action"]); 
@@ -31,9 +31,19 @@
 			<div id="userControl" class="clearfix">
 				<div id="userControlLeft"></div>
 				<div id="userControlBody"></div>
+				<div id="userConrolDropDown"></div>
+			</div>
+			<div id="nav">
+				<div class="navButton"><?php echo $this->Html->image('/img/site-buttons/navigation-button-home.png'); ?></div>
+				<div class="navButton"><?php echo $this->Html->image('/img/site-buttons/navigation-button-community.png'); ?></div>
+				<div class="navButton"><?php echo $this->Html->image('/img/site-buttons/navigation-button-forum.png'); ?></div>
 			</div>
 		</div>
 		<div id="content" class="clearfix alignCentered">
+			<div id="siteTrail">
+				<div id="siteTrailLeft">Home > Streams > Chris</div>
+				<div id="siteTrailDetail"></div>
+			</div>
 			<div id="contentAlignment" class="clearfix">
 				<?php echo $this->fetch('content'); ?>
 			</div>

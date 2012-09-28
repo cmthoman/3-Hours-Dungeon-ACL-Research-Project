@@ -1,7 +1,7 @@
 /* Core Layout */
 
 /***********************************
- * Core Style for Layout Containers
+ * HTML Element Styles
  **********************************/
 html, body, div, span, object, iframe, address, blockquote, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, b, bdo, big, cite, code, del, dfn, em, i, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, form, fieldset, legend, label, table, caption, thead, tfoot, tbody, tr, th, td {
     margin: 0px;
@@ -20,17 +20,25 @@ body{
 	padding: 0px;
 	font-family: helvetica, arial, sans-serif;
 	font-size: 12px;
-	color: #e4d3c5;
+	color: #e0ceb2;
 	/*For IE, Use PIE.htc to allow for advanced CSS3 Effects*/
 	behavior: url(/PIE.htc); 
 }
-
+a{
+	color: #7fad3d;
+	text-decoration: none;
+	border-style: none;
+}
+a:hover{
+	color: #FFFFFF;
+	text-decoration: none;
+	border-style: none;
+}
 /***********************************
  * Core Style for Layout Containers
  **********************************/
 #container{
 	position: relative;
-	left: -1px;
 	width: 100%;
 }
 
@@ -45,32 +53,36 @@ body{
 	background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
 	-pie-background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
 	width: 942px;
-	min-height: 500px;
 }
 #contentAlignment{
 	position: relative;
-	width: 898px;
+	width: 905px;
 	height: auto;
 	padding: 18px 18px 10px 18px;
 }
 #footer{
 	position: relative;
-	width: 942px;
+	width: 942x;
 }
 
 /***********************************
  * Page Columns and Common Wrappers
  **********************************/
-#oneThird{
-	width: 299px;
+#right{
+	width: 300px;
 }
-#twoThird{
-	width: 598px;
+#left{
+	width: 600px;
 }
 #wrapper900px{
-	width: 898px;
+	width: 905px;
 }
-
+#wrapper300px{
+	width: 300px;
+}
+#wrapper600px{
+	width: 600px;
+}
 /*****************************
  * HTML Attributes Attachable
  ****************************/
@@ -107,7 +119,7 @@ body{
 	top: 0px;
 	right: 0px;
 	height: 40px;
-	min-width: 150px;
+	min-width: 250px;
 }
 #userControlBody{
 	position: relative;
@@ -123,6 +135,10 @@ body{
 	background: url('/img/site-resources/user-control-background-left.png') top left no-repeat;
 }
 #userConrolDropDown{
+	background: url('/img/site-resources/user-control-portals.png') top left no-repeat;
+	width: 100px;
+	height: 40px;
+	float: left;
 	
 }
 #userControlElement{
@@ -133,3 +149,51 @@ body{
 #searchBar{
 	
 }
+
+/*Navigation*/
+#nav{
+	position: absolute;
+	padding: 0 2px 0 2px;
+	bottom: 5px;
+	left: 18px;
+	height: 55px;
+	background: url('/img/site-resources/nav-background-left.png') top left no-repeat, url('/img/site-resources/nav-background-right.png') top right no-repeat, url('/img/site-resources/nav-background-repeat.png') top;
+}
+.navButton{
+	position: relative;
+	float: left;
+	top: 2px;
+	width: 75px;
+	height: 51px;
+	background: url('/img/site-buttons/navigation-button.png');
+}
+
+/*Site-Trail*/
+#siteTrail{
+	position: absolute;
+	top: 18px;
+	left: 18px;
+	height: 40px;
+	background: url('/img/site-resources/site-trail-right.png');
+	width: 907px;
+	z-index: 10;
+}
+#siteTrailLeft{
+	position: relative;
+	float: left;
+	background: url('/img/site-resources/site-trail-left.png');
+	background-repeat: repeat-x;
+	min-width: 100px;
+	padding-top: 8px;
+	padding-left: 5px;
+	height: 32px;
+}
+#siteTrailDetail{
+	position: relative;
+	float: left;
+	background: url('/img/site-resources/site-trail-detail.png');
+	width: 37px;
+	height: 40px
+}
+
+
