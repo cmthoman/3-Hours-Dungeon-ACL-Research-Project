@@ -3,197 +3,269 @@
 /***********************************
  * HTML Element Styles
  **********************************/
-html, body, div, span, object, iframe, address, blockquote, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, b, bdo, big, cite, code, del, dfn, em, i, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, form, fieldset, legend, label, table, caption, thead, tfoot, tbody, tr, th, td {
-    margin: 0px;
-    padding: 0px;
-    border: 0px none;
-    outline: 0px none;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-body{
-	background-image: url('/img/site-resources/background.jpg');
-	background-position: top center;
-	background-repeat: no-repeat;
-	background-color: #000000;
-	margin: 0px;
-	padding: 0px;
-	font-family: helvetica, arial, sans-serif;
-	font-size: 12px;
-	color: #e0ceb2;
-	/*For IE, Use PIE.htc to allow for advanced CSS3 Effects*/
-	behavior: url(/PIE.htc); 
-}
-a{
-	color: #7fad3d;
-	text-decoration: none;
-	border-style: none;
-}
-a:hover{
-	color: #FFFFFF;
-	text-decoration: none;
-	border-style: none;
-}
+	html, body, div, span, object, iframe, address, blockquote, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, b, bdo, big, cite, code, del, dfn, em, i, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, form, fieldset, legend, label, table, caption, thead, tfoot, tbody, tr, th, td {
+	    margin: 0px;
+	    padding: 0px;
+	    border: 0px none;
+	    outline: 0px none;
+	    font-size: 100%;
+	    vertical-align: baseline;
+	}
+	body{
+		/*For IE, Use PIE.htc to allow for advanced CSS3 Effects*/
+		behavior: url(/PIE.htc); 
+		background-image: url('/img/site-resources/background.jpg');
+		background-position: top center;
+		background-repeat: no-repeat;
+		background-color: #000000;
+		margin: 0px;
+		padding: 0px;
+		font-family: helvetica, arial, sans-serif;
+		font-size: 12px;
+		color: #e0ceb2;
+	}
+	a{
+		color: #6fa15c;
+		text-decoration: none;
+		border-style: none;
+	}
+	a:hover{
+		color: #FFFFFF;
+		text-decoration: none;
+		border-style: none;
+	}
 /***********************************
  * Core Style for Layout Containers
  **********************************/
-#container{
-	position: relative;
-	width: 100%;
-}
-
-#header{
-	position: relative;
-	width: 942px;
-	height: 230px;
-}
-
-#content{
-	position: relative;
-	background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
-	-pie-background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
-	width: 942px;
-}
-#contentAlignment{
-	position: relative;
-	width: 905px;
-	height: auto;
-	padding: 18px 18px 10px 18px;
-}
-#footer{
-	position: relative;
-	width: 942x;
-}
-
+	#container{
+		position: relative;
+		width: 100%;
+	}
+	
+	#header{
+		position: relative;
+		width: 942px;
+		height: 230px;
+	}
+	
+	#content{
+		position: relative;
+		background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
+		-pie-background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
+		width: 942px;
+	}
+	#contentAlignment{
+		position: relative;
+		width: 905px;
+		height: auto;
+		padding: 18px 18px 10px 18px;
+	}
+	#footer{
+		position: relative;
+		width: 942px;
+	}
+	#debug{
+		position: relative;
+		width: 942px;
+	}
+	#pageInfo{
+		position: absolute;
+		visibility: hidden;
+		display: none;
+	}
 /***********************************
  * Page Columns and Common Wrappers
  **********************************/
-#right{
-	width: 300px;
-}
-#left{
-	width: 600px;
-}
-#wrapper900px{
-	width: 905px;
-}
-#wrapper300px{
-	width: 300px;
-}
-#wrapper600px{
-	width: 600px;
-}
+	#right{
+		width: 300px;
+	}
+	#left{
+		width: 600px;
+	}
+	.wrapper900px{
+		width: 905px;
+	}
+	.wrapper300px{
+		width: 300px;
+	}
+	.wrapper600px{
+		width: 600px;
+	}
+	.pageBackgroundAtlantis{
+		width: 908px; 
+		min-height: 680px; 
+		margin-bottom: 150px; 
+		padding-top: 50px; 
+		background-image: url('/img/site-resources/atlantis.png');
+	}
 /*****************************
  * HTML Attributes Attachable
  ****************************/
-.alignCentered{
-	margin: 0 auto 0 auto;
-}
-.marginTop10px{
-	margin-top: 10px;
-}
-.marginBottom10px{
-	margin-bottom: 10px;
-}
-.marginLeft10px{
-	margin-left: 10px;
-}
-.marginRight10px{
-	margin-right: 10px;
-}
-.bgWhite{
-	background-color: #FFFFFF;
-}
-.bgBlack{
-	background-color: #000000;
-}
-
-
+	.alignCentered{
+		margin: 0 auto 0 auto;
+	}
+	.marginTop10px{
+		margin-top: 10px;
+	}
+	.marginBottom10px{
+		margin-bottom: 10px;
+	}
+	.marginLeft10px{
+		margin-left: 10px;
+	}
+	.marginRight10px{
+		margin-right: 10px;
+	}
+	.bgWhite{
+		background-color: #FFFFFF;
+	}
+	.bgBlack{
+		background-color: #000000;
+	}
+	.bgBlackOpaque{
+		background: url('/img/site-resources/background-black-opaque.png');
+	}
+	.borderRadius8px{
+		border-radius: 8px;
+	}
+	.padding10px{
+		padding: 10px;
+	}
 /***********************************
- * Layout Elements
+ * Common Button Styles
  **********************************/
-
-/*User Controls*/
-#userControl{
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	height: 40px;
-	min-width: 250px;
-}
-#userControlBody{
-	position: relative;
-	float: left;
-	height: 40px;
-	background: url('/img/site-resources/user-control-background-repeat.png') top left repeat-x;
-}
-#userControlLeft{
-	position: relative;
-	float: left;
-	height: 40px;
-	width: 50px;
-	background: url('/img/site-resources/user-control-background-left.png') top left no-repeat;
-}
-#userConrolDropDown{
-	background: url('/img/site-resources/user-control-portals.png') top left no-repeat;
-	width: 100px;
-	height: 40px;
-	float: left;
-	
-}
-#userControlElement{
-	
-}
-
-/*Search Bar*/
-#searchBar{
-	
-}
-
-/*Navigation*/
-#nav{
-	position: absolute;
-	padding: 0 2px 0 2px;
-	bottom: 5px;
-	left: 18px;
-	height: 55px;
-	background: url('/img/site-resources/nav-background-left.png') top left no-repeat, url('/img/site-resources/nav-background-right.png') top right no-repeat, url('/img/site-resources/nav-background-repeat.png') top;
-}
-.navButton{
-	position: relative;
-	float: left;
-	top: 2px;
-	width: 75px;
-	height: 51px;
-	background: url('/img/site-buttons/navigation-button.png');
-}
-
-/*Site-Trail*/
-#siteTrail{
-	position: absolute;
-	top: 18px;
-	left: 18px;
-	height: 40px;
-	background: url('/img/site-resources/site-trail-right.png');
-	width: 907px;
-	z-index: 10;
-}
-#siteTrailLeft{
-	position: relative;
-	float: left;
-	background: url('/img/site-resources/site-trail-left.png');
-	background-repeat: repeat-x;
-	min-width: 100px;
-	padding-top: 8px;
-	padding-left: 5px;
-	height: 32px;
-}
-#siteTrailDetail{
-	position: relative;
-	float: left;
-	background: url('/img/site-resources/site-trail-detail.png');
-	width: 37px;
-	height: 40px
-}
-
-
+	.buttonLargeRed{
+		position: relative;
+		float: left;
+		height: 29px;
+		background: url('/img/site-buttons/site-button-large-red-left.png') top left no-repeat, url('/img/site-buttons/site-button-large-red-right.png') top right no-repeat, url('/img/site-buttons/site-button-large-red-repeat.png');
+		-pie-background: url('/img/site-buttons/site-button-large-red-left.png') top left no-repeat, url('/img/site-buttons/site-button-large-red-right.png') top right no-repeat, url('/img/site-buttons/site-button-large-red-repeat.png');
+		padding: 11px 10px 0px 10px;
+		font-weight: 800;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	.buttonLargeGreen{
+		position: relative;
+		float: left;
+		height: 29px;
+		background: url('/img/site-buttons/site-button-large-green-left.png') top left no-repeat, url('/img/site-buttons/site-button-large-green-right.png') top right no-repeat, url('/img/site-buttons/site-button-large-green-repeat.png');
+		-pie-background: url('/img/site-buttons/site-button-large-green-left.png') top left no-repeat, url('/img/site-buttons/site-button-large-green-right.png') top right no-repeat, url('/img/site-buttons/site-button-large-green-repeat.png');
+		padding: 11px 10px 0px 10px;
+		font-weight: 800;
+		font-size: 14px;
+		cursor: pointer;
+	}
+/***********************************
+ * Layout Element Styles
+ **********************************/
+	/*User Controls*/
+		#userControl{
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			height: 40px;
+			min-width: 100px;
+		}
+		#userControlBody{
+			position: relative;
+			float: left;
+			height: 40px;
+			background: url('/img/site-resources/user-control-background-repeat.png') top left repeat-x;
+		}
+		#userControlLeft{
+			position: relative;
+			float: left;
+			height: 40px;
+			width: 50px;
+			background: url('/img/site-resources/user-control-background-left.png') top left no-repeat;
+		}
+		#userConrolDropDown{
+			background: url('/img/site-resources/user-control-portals.png') top left no-repeat;
+			width: 90px;
+			height: 40px;
+			float: left;
+			
+		}
+		.userControlElement{
+			min-width: 25px;
+			height: 14px;
+			float: left;
+			padding: 8px;
+			border-right: 1px solid #3a3a3a;
+		}
+		
+	/*Search Bar*/
+		#searchBar{
+			position: absolute;
+			top: 75px;
+			right: 0px;
+			width: 346px;
+			height: 50px;
+			background-image: url('/img/site-resources/searchbar-background.png');
+		}
+		.searchButton{
+			position: relative;
+			width: 27px;
+			height: 27px;
+			float: right;
+			top: -25px;
+			right: 8px;
+		}
+		.searchField{
+			border: none;
+			border-color: transparent;
+			outline: none;
+			width: 250px;
+			margin-left: 12px;
+			height: 20px;
+			margin-top: 8px;
+			color: #737373;
+		}
+		
+	/*Navigation*/
+		#nav{
+			position: absolute;
+			padding: 0 2px 0 2px;
+			bottom: 5px;
+			left: 18px;
+			height: 55px;
+			background: url('/img/site-resources/nav-background-left.png') top left no-repeat, url('/img/site-resources/nav-background-right.png') top right no-repeat, url('/img/site-resources/nav-background-repeat.png') top;
+			-pie-background: url('/img/site-resources/nav-background-left.png') top left no-repeat, url('/img/site-resources/nav-background-right.png') top right no-repeat, url('/img/site-resources/nav-background-repeat.png') top;
+		}
+		.navButton{
+			position: relative;
+			float: left;
+			top: 2px;
+			width: 75px;
+			height: 51px;
+			background: url('/img/site-buttons/navigation-button.png');
+		}
+		
+	/*Site-Trail*/
+		#siteTrail{
+			position: absolute;
+			top: 18px;
+			left: 18px;
+			height: 40px;
+			background: url('/img/site-resources/site-trail-right.png');
+			width: 907px;
+			z-index: 10;
+		}
+		#siteTrailLeft{
+			position: relative;
+			float: left;
+			background: url('/img/site-resources/site-trail-left.png');
+			background-repeat: repeat-x;
+			min-width: 100px;
+			padding-top: 8px;
+			padding-left: 5px;
+			height: 32px;
+		}
+		#siteTrailDetail{
+			position: relative;
+			float: left;
+			background: url('/img/site-resources/site-trail-detail.png');
+			width: 37px;
+			height: 40px;
+		}

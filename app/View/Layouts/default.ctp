@@ -26,32 +26,29 @@
 	?>
 </head>
 <body>
+	<div id="pageInfo">
+		<div page="<?php echo $page; ?>"></div>
+	</div>
 	<div id="container" class="clearfix">
 		<div id="header" class="clearfix alignCentered">
-			<div id="userControl" class="clearfix">
-				<div id="userControlLeft"></div>
-				<div id="userControlBody"></div>
-				<div id="userConrolDropDown"></div>
-			</div>
-			<div id="nav">
-				<div class="navButton"><?php echo $this->Html->image('/img/site-buttons/navigation-button-home.png'); ?></div>
-				<div class="navButton"><?php echo $this->Html->image('/img/site-buttons/navigation-button-community.png'); ?></div>
-				<div class="navButton"><?php echo $this->Html->image('/img/site-buttons/navigation-button-forum.png'); ?></div>
-			</div>
+			<?php echo $this->element('layout/userControl'); ?>
+			<?php echo $this->element('layout/searchbar'); ?>
+			<?php echo $this->element('layout/siteNavigation'); ?>
 		</div>
 		<div id="content" class="clearfix alignCentered">
-			<div id="siteTrail">
-				<div id="siteTrailLeft">Home > Streams > Chris</div>
-				<div id="siteTrailDetail"></div>
-			</div>
+			<?php echo $this->element('layout/siteTrail'); ?>
 			<div id="contentAlignment" class="clearfix">
+				<div class="wrapper900px clearfix">
+					<?php echo $this->Session->flash();?>
+				</div>
 				<?php echo $this->fetch('content'); ?>
 			</div>
 		</div>
 		<div id="footer" class="clearfix alignCentered">
-			
+		</div>
+		<div id="debug" class="clearfix alignCentered">
+			<?php echo $this->element('sql_dump'); ?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

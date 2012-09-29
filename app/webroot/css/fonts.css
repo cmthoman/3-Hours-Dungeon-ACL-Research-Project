@@ -1,0 +1,83 @@
+/****************
+ *Font Styles 
+ ***************/
+
+/*Font Families */
+
+/*Font Classes (Special font styles with decoration or additional set parameters)*/
+
+/***************************
+ * Font Sizes
+ **************************/
+	h1{
+		font-size: 40px;
+		font-weight: 800;
+	}
+	
+	h2{
+		font-size: 34px;
+		font-weight: 800;
+	}
+	
+	h3{
+		font-size: 28px;
+		font-weight: 800;
+	}
+	
+	h4{
+		font-size: 22px;
+		font-weight: 800;
+	}
+	
+	h5{
+		font-size: 16px;
+		font-weight: 800;
+	}
+	
+	.fontSizeLarge{
+		font-size: 14px;
+	}
+	
+	.fontSizeDefault{
+		font-size: 12px;
+	}
+	
+	.fontSizeSmall{
+		font-size: 11px;
+	}
+	
+	.fontSizeFeather{
+		font-size: 10px;
+	}
+	
+	.fontSizeTiny{
+		font-size: 8px;
+	}
+/***************************
+ * Font Weights
+ **************************/
+	.fontWeightThick{
+		font-weight: 500;
+	}
+	.fontWeightBold{
+		font-weight: 600;
+	}
+	.fontWeightBolder{
+		font-weight: 800;
+	}
+/***************************
+ * Font Colors 
+ **************************/
+	.fontColorSmoke{
+		color: #3F3F3F;
+	}
+	
+	.fontColorMist{
+		color: #979797;
+	}
+	.fontColor3HDGreen{
+		color: #6fa15c;
+	}
+	.fontColorRedOrange{
+		color: #e14305;
+	}
