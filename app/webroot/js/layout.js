@@ -1,10 +1,5 @@
 $(document).ready(function() {
-	
-	//User Control
-		//Width Calculations (Prevents the userConrolBody background from running udnerneath the left and right rounded images)
-		userControlWidth = $("#userControl").width() - $("#userControlLeft").width() - $("#userConrolDropDown").width();
-		$("#userControlBody").css('width', userControlWidth);
-	
+
 	//Site Navigation
 		//Find Page & Set Active State (Page is located in a special hidden div with attribute page='<page>' which is set by the current controller on page load)
 		page = $("div[page]").attr('page');
@@ -36,5 +31,23 @@ $(document).ready(function() {
 		$(this).attr('value', 'Search 3HD');
 		}
 	});
+	
+	//Embedded Login
+		//Open Login Box
+		$("#login").click(function(){
+			$("#blackout").css('visibility', 'visible');
+			$("#embeddedLogin").css('visibility', 'visible');
+		});
+	
+		//Close Login Box
+		$("#blackout").click(function(){
+			$(this).css('visibility', 'hidden');
+			$("#embeddedLogin").css('visibility', 'hidden');
+		});
+		
+		//Submit Button
+		$(".buttonLargeGreen").click(function(){
+			$('form:first').submit();
+		});
 	
 });

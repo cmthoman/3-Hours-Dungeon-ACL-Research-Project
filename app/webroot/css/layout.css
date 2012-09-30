@@ -1,7 +1,7 @@
 /* Core Layout */
 
 /***********************************
- * HTML Element Styles
+ * HTML Tag Styles
  **********************************/
 	html, body, div, span, object, iframe, address, blockquote, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, b, bdo, big, cite, code, del, dfn, em, i, img, ins, kbd, q, samp, small, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, form, fieldset, legend, label, table, caption, thead, tfoot, tbody, tr, th, td {
 	    margin: 0px;
@@ -41,13 +41,21 @@
 		position: relative;
 		width: 100%;
 	}
-	
+	#blackout{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		background: url('/img/site-resources/background-black-opaque.png');
+		z-index: 100;
+		visibility: hidden;
+	}
 	#header{
 		position: relative;
 		width: 942px;
 		height: 230px;
 	}
-	
 	#content{
 		position: relative;
 		background: url('/img/site-resources/content-background-top.jpg') top left no-repeat, url('/img/site-resources/content-background-bottom.jpg') bottom left no-repeat, url('/img/site-resources/content-background-repeat.jpg') top left;
@@ -76,17 +84,11 @@
 /***********************************
  * Page Columns and Common Wrappers
  **********************************/
-	#right{
-		width: 300px;
-	}
-	#left{
-		width: 600px;
-	}
 	.wrapper900px{
 		width: 905px;
 	}
 	.wrapper300px{
-		width: 300px;
+		width: 305px;
 	}
 	.wrapper600px{
 		width: 600px;
@@ -157,7 +159,7 @@
 		cursor: pointer;
 	}
 /***********************************
- * Layout Element Styles
+ * Styles for Layout Elements
  **********************************/
 	/*User Controls*/
 		#userControl{
@@ -188,7 +190,6 @@
 			
 		}
 		.userControlElement{
-			min-width: 25px;
 			height: 14px;
 			float: left;
 			padding: 8px;
@@ -201,8 +202,10 @@
 			top: 75px;
 			right: 0px;
 			width: 346px;
-			height: 50px;
-			background-image: url('/img/site-resources/searchbar-background.png');
+			height: 38px;
+			background: #FFFFFF;
+			border-radius: 8px;
+			box-shadow: 0 0 20px rgb(0, 0, 0);
 		}
 		.searchButton{
 			position: relative;
@@ -268,4 +271,74 @@
 			background: url('/img/site-resources/site-trail-detail.png');
 			width: 37px;
 			height: 40px;
+		}
+		
+	/*Embedded Login*/
+		#embeddedLogin{
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			margin: -175px;
+			width: 350px;
+			min-height: 200px;
+			background: #202020;
+			border: 5px solid #b7c899;
+			z-index: 101;
+			border-radius: 4px;
+			visibility: hidden;
+		}
+		#embeddedLogin .title{
+			position: relative;
+			top: 10px;
+			left: 25px;
+		}
+		#embeddedLogin .inputLabel{
+			position: relative;
+			float: left;
+			clear: both;
+			margin-bottom: 5px;
+		}
+		#embeddedLogin .inputTextArea{
+			position: relative;
+			float: left;
+			margin-bottom: 10px;
+			padding: 0 10px 0 10px;
+			width: 330px;
+		}
+		#embeddedLogin .inputSubmit{
+			position: relative;
+			padding: 10px;
+			margin: 0 auto 0 auto;
+		}
+		#embeddedLogin .inputError{
+			position: relative;
+			float: left;
+			width: 205px;
+			margin-left: 15px;
+			margin-right: 5px;
+			padding: 10px;
+			background: url('/img/site-resources/background-black-opaque.png');
+			border-radius: 8px;
+		}
+		#embeddedLogin .inputTextAreaField{
+			border: none;
+			border-color: transparent;
+			outline: none;
+			width: 205px;
+			margin-left: 12px;
+			height: 20px;
+			margin-top: 8px;
+			color: #737373;
+			font-size: 16px;
+		}
+	 	#embeddedLogin .inputBackground{
+			position: relative;
+			float: left;
+			clear: both;
+			width: 330px;
+			height: 35px;
+			margin-left: 0px;
+			background: #FFFFFF;
+			border-radius: 5px;
+			box-shadow: 0 0 20px rgb(0,0,0);
 		}

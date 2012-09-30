@@ -2,13 +2,14 @@
 class User extends AppModel {
 	
 	public $useDbConfig = 'shared';
-						
+							
 	public $hasOne = array(
 		'UserProfile'
 	);
 	
 	public $hasMany = array(
 	);
+	
 	
 	function formatName($data){
 		if(isset($this->data['User']['username'])){
@@ -30,7 +31,7 @@ class User extends AppModel {
 		if($data['password'] == $this->data['User']['password2']){
 			return TRUE;
 		}
-		$this->invalidate('password2', 'The passwords do not match');
+		$this->invalidate('password2', 'The passwords did not match');
 		return FALSE;
 	}
 	
@@ -40,7 +41,7 @@ class User extends AppModel {
 		if($this->data['User']['email'] == $this->data['User']['email2']){
 			return TRUE;
 		}
-		$this->invalidate('email2', 'The e-mail addresses did not match.');
+		$this->invalidate('email2', 'The e-mail addresses do not match.');
 		return FALSE;
 	}
 	
@@ -133,7 +134,7 @@ class User extends AppModel {
 			),
 			'match_email' => array(
 				'rule' => 'matchEmails',
-				'message' => 'The e-mail addresses did not match.',
+				'message' => 'The e-mail addresses do not match.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -150,4 +151,3 @@ class User extends AppModel {
 		)
 	);	
 }
-?>

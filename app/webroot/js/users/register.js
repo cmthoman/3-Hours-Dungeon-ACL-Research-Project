@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	//Subit Button
+	//Submit Button
 	$(".buttonLargeGreen").click(function(){
 		$('#UserRegisterForm').submit();
 	});

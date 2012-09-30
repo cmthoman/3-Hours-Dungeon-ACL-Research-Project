@@ -1,14 +1,32 @@
 <?php
 class UserProfile extends AppModel {
+	
+	public $actsAs = array('Acl' => array('type' => 'requester'));
+	
+	public function parentNode() {
+        if (!$this->id && empty($this->data)) {
+            return null;
+        }
+        if (isset($this->data['UserProfile']['group_id'])) {
+            $groupId = $this->data['UserProfile']['group_id'];
+        } else {
+            $groupId = 6;
+        }
+        if (!$groupId) {
+            return null;
+        } else {
+            return array('Group' => array('id' => $groupId));
+        }
+    }
 		
 	public $belongsTo = array(
-		'UserGroup',
-		'User'
+		'User',
+		'Group'
 	);
 	
 	var $validate = array(
 	
-		'display_name' => array(
+		'game_name' => array(
 		
 			
 			'alphanumeric' => array(
@@ -24,8 +42,8 @@ class UserProfile extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'username_between_3_and_19' => array(
-				'rule' => array('between', 3, 19),
+			'between_3_and_19' => array(
+				'rule' => array('between', 3, 20),
 				'message' => 'Character Names must be between 3 and 19 characters in length.',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -33,12 +51,6 @@ class UserProfile extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
 		),
-		'server' => array(
-			'inList' => array(
-				'rule' => 'inList',        
-				'message' => 'Nice try, but we thought of that haha. Pick a server from the dropdown this time please!'
-			)
-		)
 	);
 	
 	function formatName($data){

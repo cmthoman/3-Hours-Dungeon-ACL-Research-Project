@@ -9,7 +9,7 @@
 		<div class="clearfix" style="margin-left: 27px;">
 			<p>Hey <?php echo $username; ?>,</p><br/>
 			<p>Congrats on creating your account! You're almost done... Now all that's left to do is head over to your email and follow the activatvation link within!</p><br/>
-			<p>If you just regested but haven't received your activation email, please give it a minute or two. Othewise click here to have it re-sent!</p><br/>
+			<p>If you just regestered but haven't received your activation email, please give it a minute or two. Othewise click here to have it re-sent!</p><br/>
 			<p>If you no longer have access to the email address <?php echo $email; ?> or this is not your email address (derp), please contact us at Support@3HoursDungeon.com so that we can help you activate your account.</p><br/>
 			<p>-Team 3HD</p><br/>
 		</div>

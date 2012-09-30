@@ -29,6 +29,8 @@
 	<div id="pageInfo">
 		<div page="<?php echo $page; ?>"></div>
 	</div>
+	<?php echo $this->element('layout/embeddedLogin'); ?>
+	<div id="blackout"></div>
 	<div id="container" class="clearfix">
 		<div id="header" class="clearfix alignCentered">
 			<?php echo $this->element('layout/userControl'); ?>

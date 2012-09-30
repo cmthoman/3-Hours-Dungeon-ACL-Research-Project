@@ -21,7 +21,6 @@
  */
 
 App::uses('Controller', 'Controller');
-App::uses('CakeEmail', 'Network/Email');
 App::uses('Security', 'Controller/Component');
 
 /**
@@ -39,10 +38,13 @@ class AppController extends Controller {
 	public $helpers = array('Html', 'Form');
 	
 	function beforeFilter(){
-		$this->Auth->allow();
+		$this->Auth->allow('*');
 		$this->set('loggedIn', $this->_loggedIn());
+		$this->set('action', null);
 		$this->Security->csrfExpires = "+2 hours";
 	}
+	
+	function beforeRender(){}
 	
 	function _loggedIn(){
 		//Define loggedIn
@@ -51,6 +53,7 @@ class AppController extends Controller {
 		if($this->Auth->user()){
 			//If user session exists define loggedIn as True
 			$loggedIn = TRUE;
+			$this->set('username', $username = $this->Auth->user('username'));
 		}
 		//Return the results of the log in test as TRUE or FALSE
 		return $loggedIn;
