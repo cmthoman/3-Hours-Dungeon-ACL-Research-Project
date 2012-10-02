@@ -1,49 +1,37 @@
-3 Hours Dungeon is a Gaming Community. The goal is to create an organized array of portals pertaining to many specific video games (eg: Guild Wars 2, Planet Side 2) and genres of video games (eg: MOBA, FPS).
+Description:
 
-The website is developed using cakePHP 2.2 and uses MVC and cakePHP conventions.
+3 Hours Dungeon is a Gaming Community. The goal is to rapidly create portals for any given game or game genre by using this project as a base. Each portal will be tied together via a unified login system. Otherwise, portals be independant from each other in that they will have seperated content databases which control not only the portal content, but user permissions per portal. All sites will stem from this project, and as such each will have the same base layout and functionality.
 
-Technologies being used: CakePHP Framework, JQUERY, JQUERY UI
 
-The goal for the Base Project is to create a foundation on which the rest of the portals can be created. Therefore, the project should consist of only the most core funcitonality for each portal.
+Fundamentals:
 
-All sites must have:
+The website is developed using cakePHP 2.2 and uses MVC structure and cakePHP conventions.
+Languages currently being used: PHP, Javascript/JQuery
+Database: MySQL
+Server: Debian Linux Apache
+
+
+Planned Outcomes:
+
+The ideal outcome is to have this prject become the base for new portals via cakePHP's plugin mechanism. Once completed, new sites will stem from th is base where the base in the plugin and the additional site features are added in the standard cake/app layer.
+
+This project should include the essentials for each site and is being developed in the order as follows:
+
 1.  Global User Login
-2.  Global User Permissions
 3.  Local User Permissions
 4.  Global User Profiles
-5.  Local User Profiles
+5.  Local User Profiles (as an extenstion of the global profile)
 6.  Global User Messaging
 7.  Local Articles
 8.  Global Forum
 9.  Local Forum
-10. Global Streaming
+10. Global Streaming (Developed as a seperate plugin from the base project, but all sites should include this).
 
-Site Plan:
-Layout
-Login/Logout/Register Links
-Portal Navigation (Switch Portals)
-Local Search (Search Current Portal)
-Local Navigation (Navigate Current Portal)
-Footer (Site Mission/Site Map/Copyright)
-User Profile
-Profile Page
-Account Management Page
-Private Messages
-Landing
-Last 5 Articles
-Rotating News Widget
-Recent Forum Activity
-Recent Stream Activity
-Community
-Forum
-Forum Categories
-Forums
-Topics
-Posts
-Media
-Images
-Videos
-Streams
-Stream Categories
-Official Streams
-Community Streams
+
+About Me and the Project:
+
+I'm a full-time busisness student and part time RPhT/CPhT. Web design and development is my personal hobby though I've been doing it longer than anything else in my life. This project is not only being developed to support what will hopefully be an awesome gaming community, but is also a chance for me to learn more about programming in general. I hope to eventually find myself somewhere between managing a business (mine or otherwise) and actively learning to and continuing to develope web software.
+
+I'm entirely self taught in the programming arena. As such, I expect there are many aspects of this project that will require review and revision. This is OK with me as long as I learn in the process. Thanks for checking out 3HD and for helping me learn!
+
+-Chris
