@@ -1,5 +1,5 @@
 .clearfix{
-	display: block;
+	display: inline-block;
 	clear: both;
 }
 

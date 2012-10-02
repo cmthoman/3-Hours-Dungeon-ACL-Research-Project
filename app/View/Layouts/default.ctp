@@ -16,6 +16,10 @@
 		if (is_file(APP.WEBROOT_DIR.DS."css".DS.$this->params["controller"].DS.$this->params["action"].".css")){ 
 		       echo $this->html->css($this->params["controller"]."/".$this->params["action"]); 
 		}
+		//Load CSS Files for the elements attached to this view in the format /css/elements/controller/view.css
+		if (is_file(APP.WEBROOT_DIR.DS."css".DS."elements".DS.$this->params["controller"].DS.$this->params["action"].".css")){ 
+		       echo $this->html->css($this->params["controller"]."/".$this->params["action"]); 
+		}
 		//Load JS Files for the current view if they exist in the /js/controller/view.js format
 		if (is_file(APP.WEBROOT_DIR.DS."js".DS.$this->params["controller"].DS.$this->params["action"].".js")){ 
 		       echo $this->Html->script($this->params["controller"]."/".$this->params["action"]); 
@@ -29,26 +33,31 @@
 	<div id="pageInfo">
 		<div page="<?php echo $page; ?>"></div>
 	</div>
-	<?php echo $this->element('layout/embeddedLogin'); ?>
+	<?php echo $this->element('Layout/embeddedLogin'); ?>
 	<div id="blackout"></div>
-	<div id="container" class="clearfix">
-		<div id="header" class="clearfix alignCentered">
-			<?php echo $this->element('layout/userControl'); ?>
-			<?php echo $this->element('layout/searchbar'); ?>
-			<?php echo $this->element('layout/siteNavigation'); ?>
+	<div id="container">
+		<div id="header" class="alignCentered">
+			<?php echo $this->element('Layout/userControl'); ?>
+			<?php echo $this->element('Layout/searchbar'); ?>
+			<?php echo $this->element('Layout/siteNavigation'); ?>
 		</div>
-		<div id="content" class="clearfix alignCentered">
-			<?php echo $this->element('layout/siteTrail'); ?>
+		<div id="content" class="alignCentered">
+			<?php echo $this->element('Layout/siteTrail'); ?>
 			<div id="contentAlignment" class="clearfix">
+				<?php 
+					if (is_file(APP.DS."View".DS."Elements".DS.$page.DS.$action.DS."pageControls.ctp")){ 
+					       echo $this->element('Layout/pageControls');
+					}
+				?>
 				<div class="wrapper900px clearfix">
 					<?php echo $this->Session->flash();?>
 				</div>
 				<?php echo $this->fetch('content'); ?>
 			</div>
 		</div>
-		<div id="footer" class="clearfix alignCentered">
+		<div id="footer" class="alignCentered">
 		</div>
-		<div id="debug" class="clearfix alignCentered">
+		<div id="debug" class="alignCentered">
 			<?php echo $this->element('sql_dump'); ?>
 		</div>
 	</div>

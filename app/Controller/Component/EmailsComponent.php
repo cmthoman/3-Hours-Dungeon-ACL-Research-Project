@@ -2,7 +2,7 @@
 App::uses('Component', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 class EmailsComponent extends Component {
-		
+	
 	public function sendAuthEmail($to){
 		$email = new CakeEmail();
 		$email->emailFormat('text');

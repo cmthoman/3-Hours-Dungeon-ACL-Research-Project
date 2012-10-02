@@ -7,7 +7,7 @@ class LandingController extends AppController {
 	}
 	
 	function index(){
-		
+		$this->set('action', 'index');
 	}
 	
 }

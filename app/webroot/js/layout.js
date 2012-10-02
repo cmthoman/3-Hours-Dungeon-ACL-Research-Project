@@ -1,9 +1,17 @@
 $(document).ready(function() {
 
+	//Buttons
+		//Form Submit Button Green
+			$(".submitButtonLargeGreen").click(function(){
+				formId = $(this).attr('id');
+				$("#"+formId).submit();
+			});	
 	//Site Navigation
 		//Find Page & Set Active State (Page is located in a special hidden div with attribute page='<page>' which is set by the current controller on page load)
 		page = $("div[page]").attr('page');
-		$("#"+page).attr('src', $("#"+page).attr('src').replace(/\.png/, '-active.png'));
+		if(page != ''){
+			$("#"+page).attr('src', $("#"+page).attr('src').replace(/\.png/, '-active.png'));
+		}
 		
 		//Rollover States
 		$(".navButton").each(function(){
@@ -44,10 +52,19 @@ $(document).ready(function() {
 			$(this).css('visibility', 'hidden');
 			$("#embeddedLogin").css('visibility', 'hidden');
 		});
-		
-		//Submit Button
-		$(".buttonLargeGreen").click(function(){
-			$('form:first').submit();
+			
+	//Page Options
+		//Open/Close Options
+		state = "closed";
+		$("#pageControlsTab").click(function(){
+			if(state != "opened"){
+				$(this).css('background-image', "url('/img/site-resources/page-controls-tab-opened.png')");
+				$("#pageControlsBody").css({'visibility' : 'visible', 'display': 'inline'});
+				state = 'opened';
+			}else{
+				$(this).css('background-image', "url('/img/site-resources/page-controls-tab-closed.png')");
+				$("#pageControlsBody").css({'visibility' : 'hidden', 'display': 'none'});
+				state = 'closed';
+			}
 		});
-	
 });

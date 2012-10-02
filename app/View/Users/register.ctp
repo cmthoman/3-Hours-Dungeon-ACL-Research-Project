@@ -10,12 +10,12 @@
 		)
 	);
 ?>
-	<div class="wrapper600px alignCentered clearfix">
+	<div class="wrapper600px alignCentered">
 		<div class="clearfix" style="margin-left: 27px; margin-bottom: 60px;">
 			<h3>Create Your Account</h3>
 		</div>
 	</div>
-	<div class="wrapper600px alignCentered clearfix">
+	<div class="wrapper600px alignCentered">
 		<div class="clearfix">
 			<div class="inputColumnLeft">
 				<div class="inputLabel fontSizeLarge">User Name:</div>
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapper600px alignCentered clearfix">
+	<div class="wrapper600px alignCentered">
 		<div class="clearfix">
 			<div class="inputColumnLeft">
 				<div class="inputLabel fontSizeLarge">Password:</div>
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapper600px alignCentered clearfix">
+	<div class="wrapper600px alignCentered">
 		<div class="clearfix">
 			<div class="inputColumnLeft">
 				<div class="inputLabel fontSizeLarge">Email:</div>
@@ -95,12 +95,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="wrapper600px alignCentered clearfix">
+	<div class="wrapper600px alignCentered">
 		<div class="clearfix" style="margin-left: 113px; margin-bottom: 60px;">
-			<div class="buttonLargeGreen">CREATE YOUR ACCOUNT</div>
+			<div id="UserRegisterForm" class="submitButtonLargeGreen">CREATE YOUR ACCOUNT</div>
 		</div>
 	</div>
 	<?php
-		echo $this->Form->end();
+		echo $this->Form->end('');
 	?>
 </div>

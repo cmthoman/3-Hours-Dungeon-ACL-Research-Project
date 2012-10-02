@@ -71,7 +71,9 @@
 	.fontColorSmoke{
 		color: #3F3F3F;
 	}
-	
+	.fontColorDefault{
+		color: #e0ceb2;
+	}
 	.fontColorMist{
 		color: #979797;
 	}

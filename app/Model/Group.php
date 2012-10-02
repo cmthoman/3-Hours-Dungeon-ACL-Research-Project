@@ -8,6 +8,6 @@ class Group extends AppModel {
     }
 	
 	public $hasMany = array(
-		'UserProfile',
+		'Subgroup',
 	);
 }

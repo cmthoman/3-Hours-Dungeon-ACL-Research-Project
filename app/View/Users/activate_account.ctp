@@ -1,11 +1,11 @@
 <div class="pageBackgroundAtlantis">
 	<?php if($activate == 'pending'): ?>
-	<div class="wrapper600px alignCentered clearfix">
+	<div class="wrapper600px alignCentered">
 		<div class="clearfix" style="margin-bottom: 60px;">
 			<h3>Account Activation Pending</h3>
 		</div>
 	</div>
-	<div class="wrapper600px alignCentered clearfix bgBlackOpaque borderRadius8px padding10px">
+	<div class="wrapper600px alignCentered bgBlackOpaque borderRadius8px padding10px">
 		<div class="clearfix" style="margin-left: 27px;">
 			<p>Hey <?php echo $username; ?>,</p><br/>
 			<p>Congrats on creating your account! You're almost done... Now all that's left to do is head over to your email and follow the activatvation link within!</p><br/>
@@ -15,12 +15,12 @@
 		</div>
 	</div>
 	<?php elseif($activate == 'complete'): ?>
-		<div class="wrapper600px alignCentered clearfix">
+		<div class="wrapper600px alignCentered">
 		<div class="clearfix" style="margin-bottom: 60px;">
 			<h3>Account Activation Complete</h3>
 		</div>
 	</div>
-	<div class="wrapper600px alignCentered clearfix bgBlackOpaque borderRadius8px padding10px">
+	<div class="wrapper600px alignCentered bgBlackOpaque borderRadius8px padding10px">
 		<div class="clearfix" style="margin-left: 27px;">
 			<p>Hey <?php echo $username; ?>,</p><br/>
 			<p>Congrats on activating your account! You can now log in, Sweet!</p><br/>

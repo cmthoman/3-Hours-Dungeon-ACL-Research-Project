@@ -7,28 +7,26 @@ class UserProfile extends AppModel {
         if (!$this->id && empty($this->data)) {
             return null;
         }
-        if (isset($this->data['UserProfile']['group_id'])) {
-            $groupId = $this->data['UserProfile']['group_id'];
+        if (isset($this->data['UserProfile']['subgroup_id'])) {
+            $subgroupId = $this->data['UserProfile']['subgroup_id'];
         } else {
-            $groupId = 6;
+            $subgroupId = $this->field('subgroup_id');;
         }
-        if (!$groupId) {
+        if (!$subgroupId) {
             return null;
         } else {
-            return array('Group' => array('id' => $groupId));
+            return array('Subgroup' => array('id' => $subgroupId));
         }
     }
 		
 	public $belongsTo = array(
 		'User',
-		'Group'
+		'Subgroup'
 	);
 	
 	var $validate = array(
 	
-		'game_name' => array(
-		
-			
+		'display_name' => array(
 			'alphanumeric' => array(
 				'rule' => array('custom', '/^[a-z0-9 ]*$/i'),        
 				'message' => 'Character names must only contain letters and numbers.'
