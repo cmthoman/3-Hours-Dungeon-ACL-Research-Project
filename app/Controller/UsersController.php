@@ -47,7 +47,7 @@ class UsersController extends AppController{
 				//Make sure post data exists
 				if (!empty($this->data)) {
 					$this->User->create();
-					$this->request->data['User']['activate_hash'] = Security::hash(rand(20, 40), NULL, TRUE);
+					$this->request->data['User']['hash'] = Security::hash(rand(20, 40), NULL, TRUE);
 					if ($this->User->save($this->data)) {
 						//Use Emails component to send a generic Auth email containing the user's supplied information and the link with the login hash
 						$this->Emails->sendAuthEmail($this->data['User']['email']);
@@ -72,12 +72,12 @@ class UsersController extends AppController{
 		elseif($this->params['url']['activate'] == 'attempt'){
 			$username = $this->params['url']['username'];
 			$key = $this->params['url']['key'];
-			$activate_user = $this->User->find('first', array('conditions'=>array('User.username'=>$username, 'User.activate_hash'=>$key)));
+			$activate_user = $this->User->find('first', array('conditions'=>array('User.username'=>$username, 'User.hash'=>$key)));
 			//Check to make sure we found a user matching our find call and update the active record to true and set a new hash for use later in our application
 			if(!empty($activate_user)){
 				$this->User->id = $activate_user['User']['id'];
 				if($this->User->saveField('active', 'true')){
-					$this->User->saveField('activate_hash', Security::hash(rand(20, 40), NULL, TRUE));
+					$this->User->saveField('hash', Security::hash(rand(20, 40), NULL, TRUE));
 					//Redirect user to the activateAccount view this time with the param "activate" set to complete
 					$this->redirect(array('action' => 'activateAccount?username='.$username.'&activate=complete'));
 				}

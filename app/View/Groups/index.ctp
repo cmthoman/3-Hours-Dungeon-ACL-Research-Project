@@ -1,3 +1,7 @@
+<?php
+	$this->Html->addCrumb('Control Panel', '/panel', array('class' => 'fontColorDefault'));
+	$this->Html->addCrumb('Groups & Subgroups Manager');
+?>
 <div class='pageBackgroundAtlantis'>
 	<div class="wrapperFull">
 		<h3>Manage Groups and Subgroups</h3>

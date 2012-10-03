@@ -5,5 +5,5 @@ If you have any questions or problems please contact us at support@3hoursdungeon
 
 -Team 3HD
 
-Activation Link: <?php echo 'http://beta.3hd.aswanmedia.com/users/activateAccount?activate=attempt&username='.$this->data['User']['username'].'&key='.$this->request->data['User']['activate_hash']; ?>
+Activation Link: <?php echo 'http://beta.3hd.aswanmedia.com/users/activateAccount?activate=attempt&username='.$this->data['User']['username'].'&key='.$this->request->data['User']['hash']; ?>
 

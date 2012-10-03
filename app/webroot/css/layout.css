@@ -86,7 +86,8 @@
  * Page Columns and Common Wrappers
  **********************************/
 	.wrapperFull{
-		width: 887;
+		position: relative;
+		width: 98%;
 		padding: 10px;
 	}
 	.wrapper300px{
@@ -109,7 +110,6 @@
  **********************************/
 	.submit{
 		visibility: hidden;
-		display: none;
 	}
 
 	.submitButtonLargeRed{

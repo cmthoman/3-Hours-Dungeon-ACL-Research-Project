@@ -1,3 +1,8 @@
+<?php
+	$this->Html->addCrumb('Control Panel', '/panel', array('class' => 'fontColorDefault'));
+	$this->Html->addCrumb('Groups & Subgroups Manager', '/groups', array('class' => 'fontColorDefault'));
+	$this->Html->addCrumb('Edit Group');
+?>
 <div class='pageBackgroundAtlantis'>
 	<div class="wrapperFull">
 		<h3>Edit Group</h3>
@@ -45,7 +50,7 @@
 	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
 		<div class="wrapperFull">
 			<h5>Delete Group</h5>
-			<div class="fontSizeSmall marginTop10px fontColorRedOrange fontWeightBold">WARNING: DO NOT DELETE GROUPS THAT STILL HAVE USERS OR ELSE THIS CAN CAUSE SERIOUS PROBLEMS</div>
+			<div class="wrapper600px fontSizeSmall marginTop10px fontColorRedOrange fontWeightBold">WARNING: DO NOT DELETE GROUPS THAT STILL HAVE USERS OR ELSE THIS CAN CAUSE SERIOUS PROBLEMS</div>
 		</div>
 		<div class="wrapperFull">
 			<div class="clearfix">

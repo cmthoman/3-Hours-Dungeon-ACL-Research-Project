@@ -1,4 +1,13 @@
 <?php
-class Controller extends AppModel{
+class ControllerNode extends AppModel {
 	
+    public $actsAs = array('Acl' => array('type' => 'controlled'));
+
+    public function parentNode() {
+        return 'Controller';
+    }
+	
+	public $hasMany = array(
+		'ActionNode',
+	);
 }
