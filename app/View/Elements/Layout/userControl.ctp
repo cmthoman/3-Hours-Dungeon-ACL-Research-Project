@@ -12,17 +12,17 @@
 		</div>
 		<div class="userControlElement fontSizeSmall fontColorMist">
 			<?php 
-				echo $this->Html->link('log out', array('controller' => 'users', 'action' => 'logout'));
+				echo $this->Html->link('log out', array('controller' => 'Users', 'action' => 'logout'));
 			?>
 		</div>
 		<div class="userControlElement fontSizeSmall fontColorMist">
 			<?php 
-				echo $this->Html->link('PROFILE', array('controller' => 'users', 'action' => 'viewProfile/'));
+				echo $this->Html->link('PROFILE', array('controller' => 'Users', 'action' => 'viewProfile/'));
 			?>
 		</div>
 		<div class="userControlElement fontSizeSmall fontColorMist">
 			<?php 
-				echo $this->Html->link('CONTROL PANEL', array('controller' => 'panel'));
+				echo $this->Html->link('CONTROL PANEL', array('controller' => 'Panel'));
 			?>
 		</div>
 		<?php else: ?>
@@ -33,7 +33,7 @@
 					echo $this->Html->link('log in', '#', array('id' => 'login'))." or ";
 				}
 				 
-				echo $this->Html->link('Create Your Account', array('controller' => 'users', 'action' => 'register'));
+				echo $this->Html->link('Create Your Account', array('controller' => 'Users', 'action' => 'register'));
 			?>
 		</div>
 		<?php endif; ?>

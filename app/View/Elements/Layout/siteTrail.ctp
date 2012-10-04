@@ -3,7 +3,7 @@
 		<?php
 			echo $this->Html->getCrumbs(' :: ' , array(
 			    'text' => '3 Hours Dungeon',
-			    'url' => array('controller' => 'landing', 'action' => 'index'),
+			    'url' => array('controller' => 'Landing', 'action' => 'index'),
 			    'escape' => false,
 			    'class' => 'fontColorDefault',
 			));

@@ -1,6 +1,6 @@
 <?php
-	$this->Html->addCrumb('Control Panel', '/panel', array('class' => 'fontColorDefault'));
-	$this->Html->addCrumb('Groups & Subgroups Manager', '/groups', array('class' => 'fontColorDefault'));
+	$this->Html->addCrumb('Control Panel', '/Panel', array('class' => 'fontColorDefault'));
+	$this->Html->addCrumb('Groups & Subgroups Manager', '/Groups', array('class' => 'fontColorDefault'));
 	$this->Html->addCrumb('Edit Group');
 ?>
 <div class='pageBackgroundAtlantis'>
@@ -13,19 +13,19 @@
 		</div>
 		<?php
 			echo $this->Form->create('Group', array(
-					'url' => array(
-						'controller' => 'groups',
-						'action' => 'edit',
-					),
-					'inputDefaults' => array(
-						'label' => false,
-						'class' => 'inputTextAreaField',
-						'div' => 'inputTextAreaBackground',
-						'error' => ''
-						)
+				'url' => array(
+					'controller' => 'Groups',
+					'action' => 'edit',
+				),
+				'inputDefaults' => array(
+					'label' => false,
+					'class' => 'inputTextAreaField',
+					'div' => 'inputTextAreaBackground',
+					'error' => ''
 					)
-				);
-				echo $this->Form->input('id', array('type' => 'hidden', 'value' => $id));
+				)
+			);
+			echo $this->Form->input('id', array('type' => 'hidden', 'value' => $id));
 		?>
 		<div class="wrapperFull">
 			<div class="clearfix">
@@ -64,9 +64,9 @@
 		</div>
 		<div class="wrapperFull">
 			<?php foreach($groups as $group): ?>
-				<ul><li><?php echo $this->Html->link($group['Group']['name'], array('controller' => 'groups', 'action' => 'edit/'.$group['Group']['id'])); ?></li>
+				<ul><li><?php echo $this->Html->link($group['Group']['name'], array('controller' => 'Groups', 'action' => 'edit/'.$group['Group']['id'])); ?></li>
 					<?php foreach($group['Subgroup'] as $subgroup): ?>
-					<ul><li><?php echo $this->Html->link($subgroup['name'], array('controller' => 'subgroups', 'action' => 'edit/'.$subgroup['id'])); ?></li>
+					<ul><li><?php echo $this->Html->link($subgroup['name'], array('controller' => 'Subgroups', 'action' => 'edit/'.$subgroup['id'])); ?></li>
 						<?php foreach($subgroup['UserProfile'] as $userProfile): ?>
 							<ul><li><?php echo $userProfile['User']['username']; ?></li>
 						<?php endforeach; ?>

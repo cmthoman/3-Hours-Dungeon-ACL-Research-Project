@@ -22,7 +22,7 @@
 			</div>
 			<div class="wrapperFull">
 				<div class="clearfix">
-					<a href="/groups/"><div class="ButtonLargeGreen fontColorDefault">GROUP MANAGER</div></a>
+					<a href="/Groups/"><div class="ButtonLargeGreen fontColorDefault">GROUP MANAGER</div></a>
 				</div>
 			</div>
 		</div>

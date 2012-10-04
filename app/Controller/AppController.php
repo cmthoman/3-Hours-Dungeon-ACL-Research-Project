@@ -21,7 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
-App::uses('Security', 'Controller/Component');
+//App::uses('Security', 'Controller/Component');
 
 /**
  * Application Controller
@@ -34,7 +34,7 @@ App::uses('Security', 'Controller/Component');
  */
 class AppController extends Controller {
 	
-	public $components = array('Acl', 'Auth', 'Security', 'Session', 'Logger');
+	public $components = array('Acl', 'Auth', 'Session', 'Logger');
 	public $helpers = array('Html', 'Form');
 	public $uses = array('User');
 	
@@ -45,7 +45,7 @@ class AppController extends Controller {
 		//Pass the default action variable to the view as null. We can override this later in a specific action to modify the layout on a per-action basis. 
 		$this->set('action', null);
 		$this->set('page', '');
-		$this->Security->csrfExpires = "+2 hours";
+		//$this->Security->csrfExpires = "+2 hours";
 	}
 	
 	function _loggedIn(){

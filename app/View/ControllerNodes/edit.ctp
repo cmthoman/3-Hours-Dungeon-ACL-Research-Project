@@ -1,5 +1,5 @@
 <?php
-	$this->Html->addCrumb('Control Panel', '/panel', array('class' => 'fontColorDefault'));
+	$this->Html->addCrumb('Control Panel', '/Panel', array('class' => 'fontColorDefault'));
 	$this->Html->addCrumb('Controller & Action Node Manager', '/ControllerNodes', array('class' => 'fontColorDefault'));
 	$this->Html->addCrumb('Edit Controller Node');
 ?>

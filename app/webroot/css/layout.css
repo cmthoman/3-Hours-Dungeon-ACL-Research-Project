@@ -383,6 +383,12 @@
 	.marginRight10px{
 		margin-right: 10px;
 	}
+	.marginTop20px{
+		margin-top: 20px;
+	}
+	.marginBottom20px{
+		margin-bottom: 20px;
+	}
 	.bgWhite{
 		background-color: #FFFFFF;
 	}
