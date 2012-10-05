@@ -80,13 +80,8 @@
 		background: #FFFFFF;
 	}
 	.inputCheckboxField{
-		position: relative;
 		float: left;
-	}
-	.inputCheckboxBackground{
-		position: relative;
-		float: left;
-		margin: 0 5px 0px 5px;
+		margin: 5px 0px 0px 12px;
 	}
 /*********************
  *Page Formatting

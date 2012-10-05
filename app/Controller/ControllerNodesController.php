@@ -69,7 +69,7 @@ class ControllerNodesController extends AppController {
 	
 	function delete($id = null){
 		$name = $this->ControllerNode->find('first', array('conditions' => array('ControllerNode.id' => $id)));
-		$this->ControllerNode->delete($id);
+		$this->ControllerNode->delete($id, true);
 		$this->Logger->logStaff('Controllers', 'Delete Controller :: ID ['.$id.'] Name ['.$name['ControllerNode']['name'].']');
 		$this->redirect(array('controller' => 'ControllerNodes', 'action' => 'index'));
 	}

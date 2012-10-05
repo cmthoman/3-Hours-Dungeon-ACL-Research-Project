@@ -19,6 +19,13 @@ class SubgroupsController extends AppController{
 		}
 	}
 	
+	function delete($id = null){
+		$name = $this->Subgroup->find('first', array('conditions' => array('Subgroup.id' => $id)));
+		$this->Subgroup->delete($id);
+		$this->Logger->logStaff('Subgroup', 'Delete Subgroup :: ID ['.$id.'] Name ['.$name['Subgroup']['name'].']');
+		$this->redirect(array('controller' => 'Groups', 'action' => 'index'));
+	}
+	
 	function edit($id = null){
 		if($this->request->is('get')){
 			$this->Subgroup->unbindModel(array('belongsTo' => array('Group')));
@@ -33,31 +40,7 @@ class SubgroupsController extends AppController{
 			$subgroup = $this->Subgroup->find('first', array('conditions' => array('Subgroup.id' => $id), 'recursive' => -1));
 			$controllerNodes = $this->ControllerNode->find('all');
 			$aro = $this->Acl->Aro->find('all', array('conditions' => array('model' => 'Subgroup', 'foreign_key' => $id)));
-			foreach($aro[0]['Aco'] as $controller){
-				foreach($controller as $permission){
-					if($permission['_create'] == 1){
-						$this->request->data['Create'][$controller['foreign_key']] = 1;
-					}else{
-						$this->request->data['Create'][$controller['foreign_key']] = 0;
-					}
-					if($permission['_read'] == 1){
-						$this->request->data['Read'][$controller['foreign_key']] = 1;
-					}else{
-						$this->request->data['Read'][$controller['foreign_key']] = 0;
-					}
-					if($permission['_update'] == 1){
-						$this->request->data['Update'][$controller['foreign_key']] = 1;
-					}else{
-						$this->request->data['Update'][$controller['foreign_key']] = 0;
-					}
-					if($permission['_delete'] == 1){
-						$this->request->data['Delete'][$controller['foreign_key']] = 1;
-					}else{
-						$this->request->data['Delete'][$controller['foreign_key']] = 0;
-					}
-				}
-			}
-			$this->set('debug', $aro);	
+			$this->_populatePermissions($aro);
 			$this->request->data['Subgroup']['name'] = $subgroup['Subgroup']['name'];
 			$this->request->data['Subgroup']['group_id'] = $subgroup['Subgroup']['group_id'];
 			$this->set('id', $id);
@@ -73,50 +56,38 @@ class SubgroupsController extends AppController{
 		}
 	}
 
-	function delete($id = null){
-		$name = $this->Subgroup->find('first', array('conditions' => array('Subgroup.id' => $id)));
-		$this->Subgroup->delete($id);
-		$this->Logger->logStaff('Subgroup', 'Delete Subgroup :: ID ['.$id.'] Name ['.$name['Subgroup']['name'].']');
-		$this->redirect(array('controller' => 'Groups', 'action' => 'index'));
+	function _populatePermissions($aro){
+		foreach($aro[0]['Aco'] as $controller){
+			foreach($controller['Permission'] as $permission => $value){
+				if($permission != "id" && $permission != "aco_id" && $permission != "aro_id"){
+					$field = ucfirst(str_replace('_', '', $permission));
+					if($value == 1){
+						$this->request->data[$field][$controller['foreign_key']] = 1;
+					}else{
+						$this->request->data[$field][$controller['foreign_key']] = 0;
+					}
+				}
+			}
+		}
 	}
-	
 		
 	function permissions(){
 		$id = $this->request->data['Permissions']['id'];
-		if($this->request->is('post')){
-				foreach($this->request->data['Create'] as $key => $value){
-					if($value == 1){
-						$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'create');
-					}else{
-						$this->Acl->deny(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'create');
-					}
+		$fields = array();
+		foreach($this->request->data as $fieldName => $val){
+			if($fieldName != 'Permissions'){
+				array_push($fields, $fieldName);
+			}
+		}
+		foreach($fields as $field){
+			foreach($this->request->data[$field] as $key => $value){
+				if($value == 1){
+					$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), strtolower($field));
+				}else{
+					$this->Acl->deny(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), strtolower($field));
 				}
-				foreach($this->request->data['Read'] as $key => $value){
-					if($value == 1){
-						$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'read');
-					}else{
-						$this->Acl->deny(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'read');
-					}
-				}
-				foreach($this->request->data['Update'] as $key => $value){
-					if($value == 1){
-						$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'update');
-					}else{
-						$this->Acl->deny(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'update');
-					}
-				}
-				foreach($this->request->data['Delete'] as $key => $value){
-					if($value == 1){
-						$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'delete');
-					}else{
-						$this->Acl->deny(array('model' => 'Subgroup', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), 'delete');
-					}
-				}
+			}
 		}
 		$this->redirect(array('controller' => 'Subgroups', 'action' => 'edit/'.$id));
-	}
-
-	function _populatePermissions(){
-		
 	}
 }

@@ -25,4 +25,29 @@ class Subgroup extends Model {
 	public $hasMany = array(
 		'UserProfile'
 	);
+	
+	var $validate = array(
+		'name' => array(
+		
+			'formatName' => array(
+				'rule' => 'formatName'
+			),
+			
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Please enter a name for this Subgroup.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		)
+	);
+	
+	function formatName($data){
+		if(isset($this->data['Subgroup']['name'])){
+			$this->data['Subgroup']['name'] = ucfirst(strtolower($this->data['Subgroup']['name']));
+		}
+		return true;
+	}
 }

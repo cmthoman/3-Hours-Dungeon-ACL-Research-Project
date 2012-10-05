@@ -56,6 +56,7 @@
 			</div>
 		</div>
 		<div id="footer" class="alignCentered">
+			<?php //echo debug($form); ?>
 		</div>
 		<div id="debug" class="alignCentered">
 			<?php echo $this->element('sql_dump'); ?>

@@ -58,6 +58,46 @@
 			</div>
 		</div>
 	</div>
+	<div class="wrapperFull">
+		<h3>Edit Permissions</h3>
+	</div>
+	<?php
+		echo $this->Form->create('Permissions', array(
+			'url' => array(
+				'controller' => 'Groups',
+				'action' => 'permissions',
+			),
+			'inputDefaults' => array(
+				'label' => false,
+				'class' => 'inputCheckboxField',
+				'div' => 'inputCheckboxBackground',
+				'error' => ''
+				)
+			)
+		);
+		echo $this->Form->input('id', array('type' => 'hidden', 'value' => $id));
+	?>
+	<?php foreach($controllerNodes as $controllerNode): ?>
+	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
+		<div class="inputLabel fontSizeDefault fontWeightBold"><?php echo $controllerNode['ControllerNode']['name']; ?></div>
+		<div class="clearfix">
+			<?php
+				foreach($controllerNode['ActionNode'] as $key => $value){
+					echo $this->Form->input($value['name'].'.'.$controllerNode['ControllerNode']['id'], array(
+						'type' => 'checkbox',
+						'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">'.$value['name'].'</div>',
+					));
+				}
+			?>
+		</div>
+	</div>
+	<?php endforeach; ?>
+	<div class="wrapperFull">
+		<div class="clearfix">
+			<div id="PermissionsEditForm" class="submitButtonLargeGreen marginLeft10px">EDIT GROUP PERMISSIONS</div>
+		</div>
+	</div>
+	<?php echo $this->Form->end(''); ?>
 	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
 		<div class="wrapperFull">
 			<h5>ARO Tree</h5>

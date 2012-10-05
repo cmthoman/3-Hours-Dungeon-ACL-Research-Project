@@ -18,6 +18,7 @@ class SetupController extends AppController{
 		$this->_setupDefaultAROs();
 		$this->_setupDefaultRootACO();
 		$this->_setupDefaultControllerNodeACOs();
+		$this->_setupDefaultPermission();
 		$this->redirect(array('controller' => 'panel', 'action' => 'index'));
 		
 	}
@@ -86,6 +87,10 @@ class SetupController extends AppController{
 				$this->ActionNode->save($aco);
 			}
 		}
+	}
+
+	function _setupDefaultPermission(){
+		$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => 1), 'Controller');
 	}
 	
 }
