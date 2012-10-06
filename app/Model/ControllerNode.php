@@ -20,11 +20,7 @@ class ControllerNode extends AppModel {
 	
 	var $validate = array(
 		'name' => array(
-		
-			'formatName' => array(
-				'rule' => 'formatName'
-			),
-			
+
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Please enter a name for this controller node.',

@@ -5,7 +5,11 @@ $(document).ready(function() {
 			$(".submitButtonLargeGreen").click(function(){
 				formId = $(this).attr('id');
 				$("#"+formId).submit();
-			});	
+			});
+			$(".submitButtonLargeRed").click(function(){
+				formId = $(this).attr('id');
+				$("#"+formId).submit();
+			});
 	//Site Navigation
 		//Find Page & Set Active State (Page is located in a special hidden div with attribute page='<page>' which is set by the current controller on page load)
 		page = $("div[page]").attr('page');

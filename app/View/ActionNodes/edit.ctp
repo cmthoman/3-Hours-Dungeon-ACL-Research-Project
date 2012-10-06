@@ -61,12 +61,38 @@
 			<h5>Delete Action</h5>
 			<div class="wrapper600px marginTop10px fontColorRedOrange fontWeightBold">WARNING: DO NOT DELETE ACTIONS THAT ARE STILL IN USE ON THE PORTAL PERIOD...EVER...EVER... OR ELSE THIS CAN CAUSE SERIOUS PROBLEMS...ONLY USED FOR PORTAL SETUP AND DEVELOPMENT!!!</div>
 		</div>
+		<?php
+			echo $this->Form->create('DeleteActionNode', array(
+					'url' => array(
+						'controller' => 'ActionNodes',
+						'action' => 'delete',
+					),
+					'inputDefaults' => array(
+						'label' => false,
+						'class' => 'inputCheckBox',
+						'div' => 'inputCheckBoxBackground',
+						'error' => ''
+						)
+					)
+				);
+				echo $this->Form->input('id', array('type' => 'hidden', 'value' => $id));
+		?>
 		<div class="wrapperFull">
 			<div class="clearfix">
-				<a href="/ActionNodes/delete/<?php echo $id ?>"><div class="ButtonLargeRed fontColorDefault">DELETE ACTION</div></a>
+				<div class="marginBottom10px">
+					<?php
+						echo $this->Form->input('drop', array(
+						'type' => 'checkbox',
+						'class' => 'inputCheckboxField',
+						'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">Delete From ACOS_AROS Table</div><br/><br/>',
+						));
+					?>
+				</div>
+				<div id="DeleteActionNodeEditForm" class="submitButtonLargeRed fontColorDefault">DELETE ACTION</div>
 			</div>
 		</div>
 	</div>
+	<?php echo $this->Form->end(''); ?>
 	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
 		<div class="wrapperFull">
 			<h5>ACO Tree</h5>

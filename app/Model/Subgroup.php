@@ -28,10 +28,6 @@ class Subgroup extends Model {
 	
 	var $validate = array(
 		'name' => array(
-		
-			'formatName' => array(
-				'rule' => 'formatName'
-			),
 			
 			'notempty' => array(
 				'rule' => array('notempty'),

@@ -12,11 +12,15 @@ class ActionNodesController extends AppController{
 			if($this->request->data){
 				if($this->ActionNode->save($this->request->data)){
 					$name = "_".strtolower($this->request->data['ActionNode']['name']);
-					$this->ActionNode->query("ALTER TABLE  `aros_acos` ADD  `".$name."` VARCHAR( 2 ) NOT NULL DEFAULT  '0'");
+					$fields = $this->ActionNode->query("SHOW COLUMNS FROM `aros_acos` LIKE '".$name."'");
+					if(empty($fields)){
+						$this->ActionNode->query("ALTER TABLE  `aros_acos` ADD  `".$name."` VARCHAR( 2 ) NOT NULL DEFAULT  '0'");
+					}
 					$this->Logger->logStaff('Action', 'Add Action :: Name['.$this->request->data['ActionNode']['name'].']');
 					$this->redirect(array('controller' => 'ControllerNodes', 'action' => 'index'));
 				}
 			}
+			$this->redirect(array('controller' => 'ControllerNodes', 'action' => 'index'));
 		}
 	}
 	
@@ -49,10 +53,11 @@ class ActionNodesController extends AppController{
 		}
 	}
 
-	function delete($id = null){
+	function delete(){
+		$id = $this->request->data['DeleteActionNode']['id'];
 		$action = $this->ActionNode->find('first', array('conditions' => array('ActionNode.id' => $id)));
 		$name = "_".strtolower($action['ActionNode']['name']);
-		if($this->Form->data['ActionNode']['drop'] == 1){
+		if($this->request->data['DeleteActionNode']['drop'] == 1){
 			$this->ActionNode->query("ALTER TABLE  `aros_acos` DROP  `".$name."`");
 		}
 		$this->ActionNode->delete($id);

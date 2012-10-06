@@ -25,7 +25,7 @@ class GroupsController extends AppController {
 			if($this->request->data){
 				if($this->Group->save($this->request->data)){
 					$this->Logger->logStaff('Groups', 'Add Group :: Name['.$this->request->data['Group']['name'].']');
-					$this->redirect(array('action' => 'index'));
+					$this->redirect(array('controller' => 'Groups', 'action' => 'edit/'.$this->Group->field('id')));
 				}
 			}
 		}
@@ -39,36 +39,37 @@ class GroupsController extends AppController {
 	}
 	
 	function edit($id = null){
-		if($this->request->is('get')){
-			$this->UserProfile->unbindModel(array('belongsTo' => array('Subgroup')));
-			$this->set('groups', $groups = $this->Group->find('all', array('recursive' => 3)));
-			foreach($groups as $group){
-				$groupId = $group['Group']['id'];
-				$groupName = $group['Group']['name'];
-				$options[$groupId] = $groupName;
-				$this->set('groupId', $groupId);
-			}
-			$controllerNodes = $this->ControllerNode->find('all');
-			$aro = $this->Acl->Aro->find('all', array('conditions' => array('model' => 'Group', 'foreign_key' => $id)));
-			$this->_populatePermissions($aro);
-			$this->request->data['Group']['name'] = $group['Group']['name'];
-			$this->set('id', $id);
-			$this->set('controllerNodes', $controllerNodes);
-		}
-		if($this->request->is('post')){
-			$this->Group->id = $this->request->data['Group']['id'];
+		if($this->request->data){
+			$id = $this->request->data['Group']['id'];
+			$this->Group->id = $id;
 			if($this->Group->save($this->request->data)){
 				$this->Logger->logStaff('Subgroups', 'Edit Group :: ID ['.$this->request->data['Group']['id'].'] Name ['.$this->request->data['Group']['name'].']');
-				$this->redirect(array('controller' => 'Groups', 'action' => 'index'));
+				//$this->redirect(array('controller' => 'Groups', 'action' => array('edit', $id)));
 			}
 		}
+		$this->UserProfile->unbindModel(array('belongsTo' => array('Subgroup')));
+		$this->set('groups', $groups = $this->Group->find('all', array('recursive' => 3)));
+		foreach($groups as $group){
+			$groupId = $group['Group']['id'];
+			$groupName = $group['Group']['name'];
+			$options[$groupId] = $groupName;
+			if($groupId == $id){
+				$this->request->data['Group']['name'] = $groupName;
+				$this->request->data['Group']['id'] = $groupId;
+				$this->set('id', $id);
+			}
+		}
+		$controllerNodes = $this->ControllerNode->find('all');
+		$aro = $this->Acl->Aro->find('all', array('conditions' => array('model' => 'Group', 'foreign_key' => $id)));
+		$this->_populatePermissions($aro);
+		$this->set('controllerNodes', $controllerNodes);
 	}
 
 	function _populatePermissions($aro){
 		foreach($aro[0]['Aco'] as $controller){
 			foreach($controller['Permission'] as $permission => $value){
 				if($permission != "id" && $permission != "aco_id" && $permission != "aro_id"){
-					$field = ucfirst(str_replace('_', '', $permission));
+					$field = strtolower(str_replace('_', '', $permission));
 					if($value == 1){
 						$this->request->data[$field][$controller['foreign_key']] = 1;
 					}else{
@@ -83,7 +84,7 @@ class GroupsController extends AppController {
 		$id = $this->request->data['Permissions']['id'];
 		$fields = array();
 		foreach($this->request->data as $fieldName => $val){
-			if($fieldName != 'Permissions'){
+			if($fieldName != 'Permissions' && $fieldName != 'Check'){
 				array_push($fields, $fieldName);
 			}
 		}

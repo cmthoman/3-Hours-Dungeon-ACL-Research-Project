@@ -85,9 +85,15 @@
 /***********************************
  * Page Columns and Common Wrappers
  **********************************/
+	.wrapper{
+		position: relative;
+		width: auto;
+		padding: 10px;
+	}
 	.wrapperFull{
 		position: relative;
-		width: 98%;
+		margin: 0 auto 0 auto;
+		width: 97%;
 		padding: 10px;
 	}
 	.wrapper300px{

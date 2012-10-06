@@ -56,9 +56,19 @@
 			</div>
 		</div>
 		<div id="footer" class="alignCentered">
-			<?php //echo debug($form); ?>
 		</div>
 		<div id="debug" class="alignCentered">
+			<?php 
+				if($debug1 != null){
+					echo debug($debug1);
+				}
+				if($debug2 != null){
+					echo debug($debug2);
+				}
+				if($debug3 != null){
+					echo debug($debug3);
+				}
+			?>
 			<?php echo $this->element('sql_dump'); ?>
 		</div>
 	</div>

@@ -62,9 +62,26 @@
 			<div class="wrapper600px fontSizeSmall marginTop10px fontColorRedOrange fontWeightBold">WARNING: DO NOT DELETE SUBGROUPS THAT STILL HAVE USERS OR ELSE THIS CAN CAUSE SERIOUS PROBLEMS</div>
 		</div>
 		<div class="wrapperFull">
-			<div class="clearfix marginLeft10px">
+			<div class="clearfix">
 				<a href="/subgroups/delete/<?php echo $id ?>"><div class="ButtonLargeRed fontColorDefault">DELETE SUBGROUP</div></a>
 			</div>
+		</div>
+	</div>
+	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
+		<div class="wrapperFull">
+			<h5>ARO Tree</h5>
+		</div>
+		<div class="wrapperFull">
+			<?php foreach($groups as $group): ?>
+				<ul><li><?php echo $this->Html->link($group['Group']['name'], array('controller' => 'Groups', 'action' => 'edit/'.$group['Group']['id'])); ?></li>
+					<?php foreach($group['Subgroup'] as $subgroup): ?>
+					<ul><li><?php echo $this->Html->link($subgroup['name'], array('controller' => 'Subgroups', 'action' => 'edit/'.$subgroup['id'])); ?></li>
+						<?php foreach($subgroup['UserProfile'] as $userProfile): ?>
+							<ul><li><?php echo $userProfile['User']['username']; ?></li></ul>
+						<?php endforeach; ?></ul>
+					<?php endforeach; ?></ul>
+				<br/>
+			<?php endforeach; ?>
 		</div>
 	</div>
 	<div class="wrapperFull">
@@ -90,38 +107,28 @@
 	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
 		<div class="inputLabel fontSizeDefault fontWeightBold"><?php echo $controllerNode['ControllerNode']['name']; ?></div>
 		<div class="clearfix">
+			<fieldset>
 			<?php
+				echo $this->Form->input('selectall', array(
+					'type' => 'checkbox',
+					'class' => 'inputCheckboxField checkall',
+					'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">Select All</div><br/><br/>',
+				));
 				foreach($controllerNode['ActionNode'] as $key => $value){
-					echo $this->Form->input($value['name'].'.'.$controllerNode['ControllerNode']['id'], array(
+					echo $this->Form->input(strtolower($value['name']).'.'.$controllerNode['ControllerNode']['id'], array(
 						'type' => 'checkbox',
 						'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">'.$value['name'].'</div>',
 					));
 				}
 			?>
+			</fieldset>
 		</div>
 	</div>
 	<?php endforeach; ?>
-	<div class="wrapperFull">
+	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
 		<div class="clearfix">
 			<div id="PermissionsEditForm" class="submitButtonLargeGreen marginLeft10px">EDIT GROUP PERMISSIONS</div>
 		</div>
 	</div>
 	<?php echo $this->Form->end(''); ?>
-	<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
-		<div class="wrapperFull">
-			<h5>ARO Tree</h5>
-		</div>
-		<div class="wrapperFull">
-			<?php foreach($groups as $group): ?>
-				<ul><li><?php echo $this->Html->link($group['Group']['name'], array('controller' => 'Groups', 'action' => 'edit/'.$group['Group']['id'])); ?></li>
-					<?php foreach($group['Subgroup'] as $subgroup): ?>
-					<ul><li><?php echo $this->Html->link($subgroup['name'], array('controller' => 'Subgroups', 'action' => 'edit/'.$subgroup['id'])); ?></li>
-						<?php foreach($subgroup['UserProfile'] as $userProfile): ?>
-							<ul><li><?php echo $userProfile['User']['username']; ?></li></ul>
-						<?php endforeach; ?></ul>
-					<?php endforeach; ?></ul>
-				<br/>
-			<?php endforeach; ?>
-		</div>
-	</div>
 </div>
