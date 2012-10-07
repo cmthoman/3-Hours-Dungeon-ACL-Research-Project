@@ -5,7 +5,6 @@
 	<div class="wrapperFull">
 		<h3>3HD Control Panel</h3>
 	</div>
-	<?php if($userData['subgroup_id'] > 1): ?>
 	<div class="wrapperFull">
 		<div class="wrapperFull">
 			<h4>Admin Tools</h4>
@@ -37,6 +36,24 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="wrapperFull">
+		<div class="wrapperFull">
+			<h4>Moderator Tools</h4>
+			<div class="wrapper600px fontSizeSmall marginBottom10px">User Management Tools</div>
+		</div>
+		<div class="wrapperFull bgBlackOpaque borderRadius8px marginBottom10px">
+			<div class="wrapperFull">
+				<h5>User Manager</h5>
+				<div class="wrapper600px fontSizeSmall marginTop10px">
+					Lookup user Accounts and Profiles. Change user's access groups, reset a user's password or email and manually activate or create accounts. Suspend user accounts.
+				</div>
+			</div>
+			<div class="wrapperFull">
+				<div class="clearfix">
+					<a href="/Groups/"><div class="ButtonLargeGreen fontColorDefault">USER MANAGER</div></a>
+				</div>
+			</div>
+		</div>
 	</div>	
-	<?php endif; ?>
 </div>

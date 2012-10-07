@@ -2,7 +2,7 @@
 class User extends AppModel {
 	
 	public $useDbConfig = 'shared';
-							
+								
 	public $hasOne = array(
 		'UserProfile'
 	);

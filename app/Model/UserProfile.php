@@ -18,6 +18,7 @@ class UserProfile extends AppModel {
             return array('Subgroup' => array('id' => $subgroupId));
         }
     }
+
 		
 	public $belongsTo = array(
 		'User',

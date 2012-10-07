@@ -21,6 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('AuthComponent', 'Controller/Component');
 //App::uses('Security', 'Controller/Component');
 
 /**
@@ -34,18 +35,30 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
-	public $components = array('Acl', 'Auth', 'Session', 'Logger', 'Security');
+	public $components = array(
+		'Acl',
+		'Auth' => array(
+			'authorize' => array(
+				'Actions' => array(
+					'actionPath' => 'Controller',
+				)
+			)
+		),
+		'Session',
+		'Logger',
+		'Security'
+	);
+	
 	public $helpers = array('Html', 'Form');
 	public $uses = array('User');
 	
 	function beforeFilter(){
-		$this->Auth->allow('*');
-		$this->_storeUserSession();
+		//$this->Auth->allow('*');
 		$this->set('loggedIn', $this->_loggedIn());
 		//Pass the default action variable to the view as null. We can override this later in a specific action to modify the layout on a per-action basis. 
 		$this->set('action', null);
 		$this->set('page', '');
-		$this->set('debug1', null);
+		$this->set('debug1', $this->Acl->check(array('User' => array('id' => 2)), 'Panel', 'index'));
 		$this->set('debug2', null);
 		$this->set('debug3', null);
 		$this->Security->csrfExpires = "+2 hours";
@@ -60,20 +73,5 @@ class AppController extends Controller {
 		}
 		//Return the results of the log in test as TRUE or FALSE
 		return $loggedIn;
-	}
-	
-	function _storeUserSession(){
-		if($this->Auth->user()){
-			if($this->Session->check('User.profile') == false){
-				$result = $this->User->find('first', array('conditions' => array('User.id' => $this->Auth->User('id'))));
-				$this->Session->write('User.profile.subgroup_id', $result['UserProfile']['subgroup_id']);
-				$userData['subgroup_id'] = $result['UserProfile']['subgroup_id'];
-				$this->set('userData', $userData);
-			}else{
-				$userData['subgroup_id'] = $this->Session->read('User.profile.subgroup_id');
-				$this->set('userData', $userData);
-			}
-		}
-	}
-	
+	}	
 }

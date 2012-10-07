@@ -1,5 +1,27 @@
 <?php
 class ActionNode extends Model {
+	
+	public $actsAs = array('Acl' => array('className' => 'AclAlias', 'type' => 'controlled'));
+
+    public function parentNode() {
+        if (!$this->id && empty($this->data)) {
+            return null;
+        }
+        if (isset($this->data['ActionNode']['controller_node_id'])) {
+            $groupId = $this->data['ActionNode']['controller_node_id'];
+        } else {
+            $groupId = $this->field('controller_node_id');
+        }
+        if (!$groupId) {
+            return null;
+        } else {
+            return array('ControllerNode' => array('id' => $groupId));
+        }
+    }
+	
+	public function alias() {
+    	return $this->field('name');
+    }
 			
 	public $belongsTo = array(
 		'ControllerNode'

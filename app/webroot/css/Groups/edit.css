@@ -83,6 +83,11 @@
 		float: left;
 		margin: 5px 0px 0px 12px;
 	}
+	.inputCheckboxBackground{
+		position: relative;
+		clear: both;
+		margin: 0 5px 10px 0px;
+	}
 /*********************
  *Page Formatting
  ********************/

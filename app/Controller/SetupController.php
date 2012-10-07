@@ -32,15 +32,16 @@ class SetupController extends AppController{
 			$this->Group->create();
 			$data['Group']['name'] = $group;
 			$this->Group->save($data);
+			//$this->Acl->Deny(array('model' => 'Group', 'foreign_key' => $this->Group->field('id')), 'Controller');
 		}
 		
 		$subgroups = array(
-			array('id' => 1, 'name' => 'Network Administrator'),
+			array('id' => 1, 'name' => 'NetworkAdministrator'),
 			array('id' => 2, 'name' => 'Editor'),
 			array('id' => 2, 'name' => 'Writer'),
 			array('id' => 2, 'name' => 'Moderator'),
-			array('id' => 3, 'name' => 'Premium Member'),
-			array('id' => 3, 'name' => 'Community Member'),
+			array('id' => 3, 'name' => 'PremiumMember'),
+			array('id' => 3, 'name' => 'CommunityMember'),
 		);
 		
 		foreach($subgroups as $subgroup){
@@ -58,18 +59,18 @@ class SetupController extends AppController{
 	
 	function _setupDefaultControllerNodeACOs(){
 		$nodes = array(
-					array('name' => 'Control Panel'), 
-					array('name' => 'Controller Nodes'),
-					array('name' => 'Action Nodes'),
+					array('name' => 'Panel'), 
+					array('name' => 'ControllerNodes'),
+					array('name' => 'ActionNodes'),
 					array('name' => 'Groups'),
 					array('name' => 'Subgroups'),
-					array('name' => 'User Profiles'),
-					array('name' => 'Private Messages'),
+					array('name' => 'UserProfiles'),
+					array('name' => 'PrivateMessages'),
 					array('name' => 'Articles'),
-					array('name' => 'Forum Categories'),
+					array('name' => 'ForumCategories'),
 					array('name' => 'Forums'),
-					array('name' => 'Forum Topics'),
-					array('name' => 'Forum Posts'),
+					array('name' => 'ForumTopics'),
+					array('name' => 'ForumPosts'),
 				);
 				
 		foreach($nodes as $node){
@@ -77,10 +78,10 @@ class SetupController extends AppController{
 			$this->ControllerNode->save($node);
 			$id = $this->ControllerNode->field('id');
 			$nodeChildren = array(
-				array('controller_node_id' => $id, 'name' => 'Create'),
-				array('controller_node_id' => $id, 'name' => 'Read'),
-				array('controller_node_id' => $id, 'name' => 'Update'),
-				array('controller_node_id' => $id, 'name' => 'Delete'),
+				array('controller_node_id' => $id, 'name' => 'index'),
+				array('controller_node_id' => $id, 'name' => 'add'),
+				array('controller_node_id' => $id, 'name' => 'edit'),
+				array('controller_node_id' => $id, 'name' => 'delete'),
 			);
 			foreach($nodeChildren as $aco){
 				$this->ActionNode->create();
@@ -90,7 +91,7 @@ class SetupController extends AppController{
 	}
 
 	function _setupDefaultPermission(){
-		$this->Acl->allow(array('model' => 'Subgroup', 'foreign_key' => 1), 'Controller');
+		$this->Acl->allow(array('model' => 'Group', 'foreign_key' => 1), 'Controller');
 	}
 	
 }

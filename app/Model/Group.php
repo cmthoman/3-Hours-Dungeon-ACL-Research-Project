@@ -1,10 +1,14 @@
 <?php
 class Group extends AppModel {
 	
-    public $actsAs = array('Acl' => array('type' => 'requester'));
+    public $actsAs = array('Acl' => array('className' => 'AclAlias', 'type' => 'requester'));
 
     public function parentNode() {
         return null;
+    }
+	
+	public function alias() {
+    	return $this->field('name');
     }
 	
 	public $hasMany = array(

@@ -1,6 +1,6 @@
 <?php
 class Subgroup extends Model {
-	public $actsAs = array('Acl' => array('type' => 'requester'));
+	public $actsAs = array('Acl' => array('className' => 'AclAlias', 'type' => 'requester'));
 	
 	public function parentNode() {
         if (!$this->id && empty($this->data)) {
@@ -17,7 +17,11 @@ class Subgroup extends Model {
             return array('Group' => array('id' => $groupId));
         }
     }
-		
+	
+	public function alias() {
+    	return $this->field('name');
+    }
+	
 	public $belongsTo = array(
 		'Group'
 	);
