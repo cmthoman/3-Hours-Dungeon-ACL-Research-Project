@@ -17,12 +17,43 @@ class SetupController extends AppController{
 	function run(){
 		$this->_setupDefaultAROs();
 		$this->_setupDefaultRootACO();
-		$this->_setupDefaultControllerNodeACOs();
+		$this->_setupDefaultControlPanelNodeACOs();
 		$this->_setupDefaultPermission();
 		$this->redirect(array('controller' => 'panel', 'action' => 'index'));
 		
 	}
 	
+	function _setupDefaultRootACO(){
+		$ACORootNode = array('alias' => 'Controller');
+		$this->Acl->Aco->save($ACORootNode);
+	}
+	
+	function _setupDefaultControlPanelNodeACOs(){
+		$nodes = array(
+					array('name' => 'Panel'), 
+					array('name' => 'ControllerNodes'),
+					array('name' => 'ActionNodes'),
+					array('name' => 'Groups'),
+					array('name' => 'Subgroups'),
+				);
+				
+		foreach($nodes as $node){
+			$this->ControllerNode->create();
+			$this->ControllerNode->save($node);
+			$id = $this->ControllerNode->field('id');
+			$nodeChildren = array(
+				array('controller_node_id' => $id, 'name' => 'index'),
+				array('controller_node_id' => $id, 'name' => 'add'),
+				array('controller_node_id' => $id, 'name' => 'edit'),
+				array('controller_node_id' => $id, 'name' => 'delete'),
+			);
+			foreach($nodeChildren as $aco){
+				$this->ActionNode->create();
+				$this->ActionNode->save($aco);
+			}
+		}
+	}
+
 	function _setupDefaultAROs(){
 		//Use this action when first launching a portal to setup the default ARO structure.
 		
@@ -51,47 +82,11 @@ class SetupController extends AppController{
 			$this->Subgroup->save($data);
 		}
 	}
-	
-	function _setupDefaultRootACO(){
-		$ACORootNode = array('alias' => 'Controller');
-		$this->Acl->Aco->save($ACORootNode);
-	}
-	
-	function _setupDefaultControllerNodeACOs(){
-		$nodes = array(
-					array('name' => 'Panel'), 
-					array('name' => 'ControllerNodes'),
-					array('name' => 'ActionNodes'),
-					array('name' => 'Groups'),
-					array('name' => 'Subgroups'),
-					array('name' => 'UserProfiles'),
-					array('name' => 'PrivateMessages'),
-					array('name' => 'Articles'),
-					array('name' => 'ForumCategories'),
-					array('name' => 'Forums'),
-					array('name' => 'ForumTopics'),
-					array('name' => 'ForumPosts'),
-				);
-				
-		foreach($nodes as $node){
-			$this->ControllerNode->create();
-			$this->ControllerNode->save($node);
-			$id = $this->ControllerNode->field('id');
-			$nodeChildren = array(
-				array('controller_node_id' => $id, 'name' => 'index'),
-				array('controller_node_id' => $id, 'name' => 'add'),
-				array('controller_node_id' => $id, 'name' => 'edit'),
-				array('controller_node_id' => $id, 'name' => 'delete'),
-			);
-			foreach($nodeChildren as $aco){
-				$this->ActionNode->create();
-				$this->ActionNode->save($aco);
-			}
-		}
-	}
 
 	function _setupDefaultPermission(){
-		$this->Acl->allow(array('model' => 'Group', 'foreign_key' => 1), 'Controller');
+		$this->Acl->Allow(array('model' => 'Group', 'foreign_key' => 1), 'Controller');
+		$this->Acl->Deny(array('model' => 'Group', 'foreign_key' => 2), 'Controller');
+		$this->Acl->Deny(array('model' => 'Group', 'foreign_key' => 3), 'Controller');
 	}
 	
 }

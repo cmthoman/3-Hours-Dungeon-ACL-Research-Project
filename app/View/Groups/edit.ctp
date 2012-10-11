@@ -107,10 +107,10 @@
 					'class' => 'inputCheckboxField checkall',
 					'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">Select All</div><br/><br/>',
 				));
-				foreach($controllerNode['ActionNode'] as $key => $value){
-					echo $this->Form->input(strtolower($value['name']).'.'.$controllerNode['ControllerNode']['id'], array(
+				foreach($controllerNode['ActionNode'] as $node){
+					echo $this->Form->input($controllerNode['ControllerNode']['name'].'.'.strtolower($node['name']), array(
 						'type' => 'checkbox',
-						'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">'.$value['name'].'</div>',
+						'after' => '<div class="inputCheckboxLabel fontSizeSmall floatLeft">'.$node['name'].'</div>',
 					));
 				}
 			?>

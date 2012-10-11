@@ -66,14 +66,32 @@ class GroupsController extends AppController {
 	}
 
 	function _populatePermissions($aro){
-		foreach($aro[0]['Aco'] as $controller){
-			foreach($controller['Permission'] as $permission => $value){
-				if($permission != "id" && $permission != "aco_id" && $permission != "aro_id"){
-					$field = strtolower(str_replace('_', '', $permission));
-					if($value == 1){
-						$this->request->data[$field][$controller['foreign_key']] = 1;
+		$fields = $this->Acl->Aco->find('all', array('conditions' => array('model' => 'ControllerNode')));
+		//$this->set('debug1', $aro);
+		$actions = array();
+		foreach($aro[0]['Aco'] as $action){
+			$actionInfo['name'] = $action['alias'];
+			$actionInfo['id'] = $action['parent_id'];
+			foreach($action['Permission'] as $permission){
+				if($permission == 1){
+					$actionInfo['allowed'] = 'true';
+				}else{
+					$actionInfo['allowed'] = 'false';
+				}
+			}
+			array_push($actions, $actionInfo);
+		}
+		$this->set('debug1', $actions);
+		foreach($fields as $field){
+			$fieldName = $field['Aco']['alias'];
+			$fieldId = $field['Aco']['id'];
+			$this->set('debug2', $fieldId);
+			foreach($actions as $action){
+				if($action['id'] == $fieldId){
+					if($action['allowed'] == 'true'){
+						$this->request->data[$fieldName][$action['name']] = 1;
 					}else{
-						$this->request->data[$field][$controller['foreign_key']] = 0;
+						$this->request->data[$fieldName][$action['name']] = 0;
 					}
 				}
 			}
@@ -91,9 +109,10 @@ class GroupsController extends AppController {
 		foreach($fields as $field){
 			foreach($this->request->data[$field] as $key => $value){
 				if($value == 1){
-					$this->Acl->allow(array('model' => 'Group', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), strtolower($field));
-				}else{
-					$this->Acl->deny(array('model' => 'Group', 'foreign_key' => $id), array('model' => 'ControllerNode', 'foreign_key' => $key), strtolower($field));
+					$this->Acl->allow(array('model' => 'Group', 'foreign_key' => $id), 'Controller/'.$field.'/'.$key );
+				}else
+				if($value == 0){
+					$this->Acl->deny(array('model' => 'Group', 'foreign_key' => $id), 'Controller/'.$field.'/'.$key );
 				}
 			}
 		}

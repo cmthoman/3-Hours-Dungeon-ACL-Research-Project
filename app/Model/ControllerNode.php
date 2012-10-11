@@ -17,7 +17,7 @@ class ControllerNode extends AppModel {
 	
 	function formatName($data){
 		if(isset($this->data['ControllerNode']['name'])){
-			$this->data['ControllerNode']['name'] = ucfirst(strtolower($this->data['ControllerNode']['name']));
+			$this->data['ControllerNode']['name'] = strtolower($this->data['ControllerNode']['name']);
 		}
 		return true;
 	}
@@ -28,8 +28,8 @@ class ControllerNode extends AppModel {
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Please enter a name for this controller node.',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'allowEmpty' => false,
+				'required' => true,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),

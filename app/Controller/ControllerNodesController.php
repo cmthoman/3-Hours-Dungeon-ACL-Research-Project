@@ -25,10 +25,7 @@ class ControllerNodesController extends AppController {
 				if($this->ControllerNode->save($this->request->data)){
 					$id = $this->ControllerNode->field('id');
 					$ACOChildren = array(
-						array('controller_node_id' => $id, 'name' => 'Create'),
-						array('controller_node_id' => $id, 'name' => 'Read'),
-						array('controller_node_id' => $id, 'name' => 'Update'),
-						array('controller_node_id' => $id, 'name' => 'Delete'),
+						array('controller_node_id' => $id, 'name' => 'index')
 					);
 					
 					foreach($ACOChildren as $aco){
