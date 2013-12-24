@@ -1,5 +1,15 @@
 Description:
 
+This project basically served as a launching point for me to learn ACL's in the cakephp framework. For all intensive purposes, this project is depreciated but servers to remind me of what I have accomplished in cake.
+
+
+
+///////////////////
+//OLD DEPRECIATED//
+///////////////////
+
+
+
 3 Hours Dungeon is a Gaming Community. The goal is to rapidly create portals for any given game or game genre by using this project as a base. Each portal will be tied together via a unified login system. Otherwise, portals will be independant from each other. Each will have seperated content databases which control not only the portal content, but user permissions per portal. All sites will stem from this project, and as such each will have the same base layout and functionality.
 
 
